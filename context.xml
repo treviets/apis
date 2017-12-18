@@ -1,0 +1,223 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!-- The contents of this file will be loaded for each web application -->
+<Context>
+    <Resource name="jdbc/cd2"
+              auth="Container"
+              type="javax.sql.DataSource"
+              username="root"
+              password="Admin-123"
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://150.95.104.147:3306/vucao_cd2_api?useUnicode=true&amp;characterEncoding=utf-8"
+              maxTotal="100"
+              maxIdle="10"
+              maxWaitMillis="10000"/>
+
+    <Environment name="wp/springProfilesActive" type="java.lang.String" value="dev"/>  <!-- ACTIVE PROFILE -->
+
+    <!-- Site Configure -->
+    <Environment name="wp/dev/path/protocol" type="java.lang.String" value="http"/>
+    <Environment name="wp/stage/path/protocol" type="java.lang.String" value="http"/>
+    <Environment name="wp/prod/path/protocol" type="java.lang.String" value="https"/> <!-- PROD -->
+
+    <Environment name="wp/dev/path/baseurl" type="java.lang.String" value="nappersons.vva.asia:8080/RESTful"/>
+    <Environment name="wp/stage/path/baseurl" type="java.lang.String" value="nappersons.vva.asia:8080/RESTful"/>
+    <Environment name="wp/prod/path/baseurl" type="java.lang.String" value="www.adjumble.com"/> <!-- PROD -->
+
+    <Environment name="wp/dev/path/kernal/bill/html/page" type="java.lang.String" value="%s://%s/kernal/asset/obtain/response/%s"/>
+    <Environment name="wp/stage/path/kernal/bill/html/page" type="java.lang.String" value="%s://%s/kernal/asset/obtain/response/%s"/>
+    <Environment name="wp/prod/path/kernal/bill/html/page" type="java.lang.String" value="%s://%s/download/?%s"/> <!-- PROD -->
+
+    <Environment name="wp/dev/path/kernal/bill/pdf/page" type="java.lang.String" value="%s://%s/kernal/asset/obtain/response/%s"/>
+    <Environment name="wp/stage/path/kernal/bill/pdf/page" type="java.lang.String" value="%s://%s/kernal/asset/obtain/response/%s"/>
+    <Environment name="wp/prod/path/kernal/bill/pdf/page" type="java.lang.String" value="%s://%s/download/?%s"/> <!-- PROD -->
+
+    <!-- Internal -->
+    <Environment name="wp/dev/exception/database" type="java.lang.Boolean" value="true"/>
+    <Environment name="wp/stage/exception/database" type="java.lang.Boolean" value="true"/>
+    <Environment name="wp/prod/exception/database" type="java.lang.Boolean" value="true"/> <!-- PROD -->
+
+    <Environment name="wp/dev/exception/2frontend" type="java.lang.Boolean" value="false"/>
+    <Environment name="wp/stage/exception/2frontend" type="java.lang.Boolean" value="false"/>
+    <Environment name="wp/prod/exception/2frontend" type="java.lang.Boolean" value="false"/> <!-- PROD -->
+
+    <Environment name="wp/dev/path/asset" type="java.lang.String" value="/asset"/>
+    <Environment name="wp/stage/path/asset" type="java.lang.String" value="/asset"/>
+    <Environment name="wp/prod/path/asset" type="java.lang.String" value="/asset"/> <!-- PROD -->
+
+    <Environment name="wp/dev/length/registration/verifi/code" type="java.lang.Integer" value="6"/>
+    <Environment name="wp/stage/length/registration/verifi/code" type="java.lang.Integer" value="6"/>
+    <Environment name="wp/prod/length/registration/verifi/code" type="java.lang.Integer" value="6"/> <!-- PROD -->
+
+    <Environment name="wp/dev/length/registration/verifi/ttl" type="java.lang.Integer" value="1200"/>
+    <Environment name="wp/stage/length/registration/verifi/ttl" type="java.lang.Integer" value="1200"/>
+    <Environment name="wp/prod/length/registration/verifi/ttl" type="java.lang.Integer" value="1200"/> <!-- PROD -->
+
+    <Environment name="wp/dev/length/resetpassword/verifi/code" type="java.lang.Integer" value="6"/>
+    <Environment name="wp/stage/length/resetpassword/verifi/code" type="java.lang.Integer" value="6"/>
+    <Environment name="wp/prod/length/resetpassword/verifi/code" type="java.lang.Integer" value="6"/> <!-- PROD -->
+
+    <Environment name="wp/dev/length/resetpassword/verifi/ttl" type="java.lang.Integer" value="1200"/>
+    <Environment name="wp/stage/length/resetpassword/verifi/ttl" type="java.lang.Integer" value="1200"/>
+    <Environment name="wp/prod/length/resetpassword/verifi/ttl" type="java.lang.Integer" value="1200"/> <!-- PROD -->
+
+    <Environment name="wp/dev/length/resetpassword/temporary/code" type="java.lang.Integer" value="128"/>
+    <Environment name="wp/stage/length/resetpassword/temporary/code" type="java.lang.Integer" value="128"/>
+    <Environment name="wp/prod/length/resetpassword/temporary/code" type="java.lang.Integer" value="128"/> <!-- PROD -->
+
+    <Environment name="wp/dev/length/resetpassword/temporary/ttl" type="java.lang.Integer" value="1200"/>
+    <Environment name="wp/stage/length/resetpassword/temporary/ttl" type="java.lang.Integer" value="1200"/>
+    <Environment name="wp/prod/length/resetpassword/temporary/ttl" type="java.lang.Integer" value="1200"/> <!-- PROD -->
+
+    <Environment name="wp/dev/length/billing/due/ad" type="java.lang.Integer" value="7"/>
+    <Environment name="wp/stage/length/billing/due/ad" type="java.lang.Integer" value="7"/>
+    <Environment name="wp/prod/length/billing/due/ad" type="java.lang.Integer" value="7"/> <!-- PROD -->
+
+    <Environment name="wp/dev/currency/billing" type="java.lang.String" value="HKD"/>
+    <Environment name="wp/stage/currency/billing" type="java.lang.String" value="HKD"/>
+    <Environment name="wp/prod/currency/billing" type="java.lang.String" value="HKD"/> <!-- PROD -->
+
+    <Environment name="wp/dev/key/aes256/ivparameterspec" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/stage/key/aes256/ivparameterspec" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/prod/key/aes256/ivparameterspec" type="java.lang.String" value="xxxxx"/> <!-- PROD -->
+
+    <Environment name="wp/dev/key/aes256/secretkeyspec" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/stage/key/aes256/secretkeyspec" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/prod/key/aes256/secretkeyspec" type="java.lang.String" value="xxxxx"/> <!-- PROD -->
+
+    <Environment name="wp/dev/mail/template" type="java.lang.Integer" value="781"/>
+    <Environment name="wp/stage/mail/template" type="java.lang.Integer" value="781"/>
+    <Environment name="wp/prod/mail/template" type="java.lang.Integer" value="781"/> <!-- PROD -->
+
+    <Environment name="wp/dev/invoice/template/html" type="java.lang.Integer" value="782"/>
+    <Environment name="wp/stage/invoice/template/html" type="java.lang.Integer" value="782"/>
+    <Environment name="wp/prod/invoice/template/html" type="java.lang.Integer" value="782"/> <!-- PROD -->
+
+    <Environment name="wp/dev/invoice/template/pdf" type="java.lang.Integer" value="783"/>
+    <Environment name="wp/stage/invoice/template/pdf" type="java.lang.Integer" value="783"/>
+    <Environment name="wp/prod/invoice/template/pdf" type="java.lang.Integer" value="783"/> <!-- PROD -->
+
+    <!-- Google -->
+    <Environment name="wp/dev/key/google/api" type="java.lang.String" value="xxxxx" />
+    <Environment name="wp/stage/key/google/api" type="java.lang.String" value="xxxxx" />
+    <Environment name="wp/prod/key/google/api" type="java.lang.String" value="xxxxx" /> <!-- PROD -->
+
+    <!-- JavaMail -->
+    <Environment name="wp/dev/extern/mail/vendor" type="java.lang.String" value="aws"/>
+    <Environment name="wp/stage/extern/mail/vendor" type="java.lang.String" value="aws"/>
+    <Environment name="wp/prod/extern/mail/vendor" type="java.lang.String" value="aws"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/mail/from" type="java.lang.String" value="auto-mailer@adjumble.com"/>
+    <Environment name="wp/stage/extern/mail/from" type="java.lang.String" value="auto-mailer@adjumble.com"/>
+    <Environment name="wp/prod/extern/mail/from" type="java.lang.String" value="auto-mailer@adjumble.com"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/mail/fromname" type="java.lang.String" value="AdJumble"/>
+    <Environment name="wp/stage/extern/mail/fromname" type="java.lang.String" value="AdJumble"/>
+    <Environment name="wp/prod/extern/mail/fromname" type="java.lang.String" value="AdJumble"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/mail/bcc" type="java.lang.String" value="developer@vva.asia"/>
+    <Environment name="wp/stage/extern/mail/bcc" type="java.lang.String" value="developer@vva.asia"/>
+    <Environment name="wp/prod/extern/mail/bcc" type="java.lang.String" value="developer@vva.asia"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/mail/aws/username" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/stage/extern/mail/aws/username" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/prod/extern/mail/aws/username" type="java.lang.String" value="xxxxx"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/mail/aws/passphrase" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/stage/extern/mail/aws/passphrase" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/prod/extern/mail/aws/passphrase" type="java.lang.String" value="xxxxx"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/mail/javamail/host" type="java.lang.String" value="email-smtp.us-east-1.amazonaws.com"/>
+    <Environment name="wp/stage/extern/mail/javamail/host" type="java.lang.String" value="email-smtp.us-east-1.amazonaws.com"/>
+    <Environment name="wp/prod/extern/mail/javamail/host" type="java.lang.String" value="email-smtp.us-east-1.amazonaws.com"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/mail/javamail/port" type="java.lang.Integer" value="587"/>
+    <Environment name="wp/stage/extern/mail/javamail/port" type="java.lang.Integer" value="587"/>
+    <Environment name="wp/prod/extern/mail/javamail/port" type="java.lang.Integer" value="587"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/mail/javamail/protocol" type="java.lang.String" value="smtps"/>
+    <Environment name="wp/stage/extern/mail/javamail/protocol" type="java.lang.String" value="smtps"/>
+    <Environment name="wp/prod/extern/mail/javamail/protocol" type="java.lang.String" value="smtps"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/mail/javamail/username" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/stage/extern/mail/javamail/username" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/prod/extern/mail/javamail/username" type="java.lang.String" value="xxxxx"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/mail/javamail/passphrase" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/stage/extern/mail/javamail/passphrase" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/prod/extern/mail/javamail/passphrase" type="java.lang.String" value="xxxxx"/> <!-- PROD -->
+
+    <!-- PayPal -->
+    <Environment name="wp/dev/extern/paypal/rest/api/clientid" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/stage/extern/paypal/rest/api/clientid" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/prod/extern/paypal/rest/api/clientid" type="java.lang.String" value="xxxxx"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/paypal/rest/api/secret" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/stage/extern/paypal/rest/api/secret" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/prod/extern/paypal/rest/api/secret" type="java.lang.String" value="xxxxx"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/paypal/rest/api/env" type="java.lang.String" value="sandbox"/>
+    <Environment name="wp/stage/extern/paypal/rest/api/env" type="java.lang.String" value="sandbox"/>
+    <Environment name="wp/prod/extern/paypal/rest/api/env" type="java.lang.String" value="live"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/paypal/webscr/api" type="java.lang.String" value="https://www.sandbox.paypal.com/cgi-bin/webscr"/>
+    <Environment name="wp/stage/extern/paypal/webscr/api" type="java.lang.String" value="https://www.sandbox.paypal.com/cgi-bin/webscr"/>
+    <Environment name="wp/prod/extern/paypal/webscr/api" type="java.lang.String" value="https://www.paypal.com/cgi-bin/webscr"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/paypal/ipn/api" type="java.lang.String" value="https://napperons.vva.asia/RESTful/extern/paypal/ipn"/>
+    <Environment name="wp/stage/extern/paypal/ipn/api" type="java.lang.String" value="https://napperons.vva.asia/RESTful/extern/paypal/ipn"/>
+    <Environment name="wp/prod/extern/paypal/ipn/api" type="java.lang.String" value="https://www.adjumble.com/RESTful/extern/paypal/ipn"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/paypal/merchant/id" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/stage/extern/paypal/merchant/id" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/prod/extern/paypal/merchant/id" type="java.lang.String" value="xxxxx"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/paypal/api/username" type="java.lang.String" value="admin-facilitator_api1.vva.asia"/>
+    <Environment name="wp/stage/extern/paypal/api/username" type="java.lang.String" value="admin-facilitator_api1.vva.asia"/>
+    <Environment name="wp/prod/extern/paypal/api/username" type="java.lang.String" value="admin_api1.vva.asia"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/paypal/api/password" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/stage/extern/paypal/api/password" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/prod/extern/paypal/api/password" type="java.lang.String" value="xxxxx"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/paypal/api/signature" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/stage/extern/paypal/api/signature" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/prod/extern/paypal/api/signature" type="java.lang.String" value="xxxxx"/> <!-- PROD -->
+
+    <!-- SMS -->
+    <Environment name="wp/dev/extern/sms/vendor" type="java.lang.String" value="accessyou"/>
+    <Environment name="wp/stage/extern/sms/vendor" type="java.lang.String" value="accessyou"/>
+    <Environment name="wp/prod/extern/sms/vendor" type="java.lang.String" value="accessyou"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/sms/prefix" type="java.lang.Integer" value="852"/>
+    <Environment name="wp/stage/extern/sms/prefix" type="java.lang.Integer" value="852"/>
+    <Environment name="wp/prod/extern/sms/prefix" type="java.lang.Integer" value="852"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/sms/accessyou/api" type="java.lang.String" value="http://api.accessyou.com/sms/sendsms-utf8.php?accountno=%s&amp;pwd=%s&amp;msg=%s&amp;phone=%s&amp;size=l"/>
+    <Environment name="wp/stage/extern/sms/accessyou/api" type="java.lang.String" value="http://api.accessyou.com/sms/sendsms-utf8.php?accountno=%s&amp;pwd=%s&amp;msg=%s&amp;phone=%s&amp;size=l"/>
+    <Environment name="wp/prod/extern/sms/accessyou/api" type="java.lang.String" value="http://api.accessyou.com/sms/sendsms-utf8.php?accountno=%s&amp;pwd=%s&amp;msg=%s&amp;phone=%s&amp;size=l"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/sms/accessyou/account" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/stage/extern/sms/accessyou/account" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/prod/extern/sms/accessyou/account" type="java.lang.String" value="xxxxx"/> <!-- PROD -->
+
+    <Environment name="wp/dev/extern/sms/accessyou/passphrase" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/stage/extern/sms/accessyou/passphrase" type="java.lang.String" value="xxxxx"/>
+    <Environment name="wp/prod/extern/sms/accessyou/passphrase" type="java.lang.String" value="xxxxx"/> <!-- PROD -->
+
+</Context>
