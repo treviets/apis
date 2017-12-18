@@ -2,15 +2,14 @@ package net.cd.dto.kernal;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class CdCommentDto {
+public class CdFavouriteDto {
 	private Integer id;
 	private CdKMemberDto author;
-	private String comment;
 	private String made;
 	private String revised;
+	
 	@JsonIgnore
 	private String purged;
-	
 	public Integer getId() {
 		return id;
 	}
@@ -22,12 +21,6 @@ public class CdCommentDto {
 	}
 	public void setAuthor(CdKMemberDto author) {
 		this.author = author;
-	}
-	public String getComment() {
-		return comment;
-	}
-	public void setComment(String comment) {
-		this.comment = comment;
 	}
 	public String getMade() {
 		return made;
@@ -47,9 +40,4 @@ public class CdCommentDto {
 	public void setPurged(String purged) {
 		this.purged = purged;
 	}
-	
-	
-	
-	
-	
 }

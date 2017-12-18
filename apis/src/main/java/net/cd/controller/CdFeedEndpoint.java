@@ -132,7 +132,7 @@ public class CdFeedEndpoint extends BaseEndpoint {
         cdCommentDto.setAuthor(member);
         feed.getArticle().getComments().add(cdCommentDto);
         feedService.save(feed);
-        
+        response.setStatus(HttpServletResponse.SC_CREATED);
         return true;
     }
 
