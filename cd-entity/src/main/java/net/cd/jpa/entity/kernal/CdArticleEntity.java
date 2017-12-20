@@ -26,14 +26,14 @@ public class CdArticleEntity {
 	private Integer id;
     private String title;
     private String description;
+    private Integer favouriteCount;
+    private Integer commentCount;
+    private Integer sharedCount;
     private String made;
     private String revised;
     private String purged;
     private List<CdKAssetEntity> photos;
     private List<CdCommentEntity> comments;
-    private List<CdLikeEntity> likes;
-    private List<CdShareEntity> shares;
-    private List<CdFavouriteEntity> favourites;
     @Id
     @Column(name="id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -64,7 +64,32 @@ public class CdArticleEntity {
 	}
 	
 	
+	@Basic
+	@Column(name="favourite_count")
+	public Integer getFavouriteCount() {
+		return favouriteCount;
+	}
+	public void setFavouriteCount(Integer favouriteCount) {
+		this.favouriteCount = favouriteCount;
+	}
 	
+	@Basic
+	@Column(name="comment_count")
+	public Integer getCommentCount() {
+		return commentCount;
+	}
+	public void setCommentCount(Integer commentCount) {
+		this.commentCount = commentCount;
+	}
+	
+	@Basic
+	@Column(name="shared_count")
+	public Integer getSharedCount() {
+		return sharedCount;
+	}
+	public void setSharedCount(Integer sharedCount) {
+		this.sharedCount = sharedCount;
+	}
 	@Basic
 	@Column(name="made")
 	public String getMade() {
@@ -116,42 +141,6 @@ public class CdArticleEntity {
 	}
 	public void setComments(List<CdCommentEntity> comments) {
 		this.comments = comments;
-	}
-	
-	@OneToMany (fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinTable(
-            name = "cd_articleLike",
-            joinColumns = @JoinColumn(name = "article", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "like", referencedColumnName = "id"))
-	public List<CdLikeEntity> getLikes() {
-		return likes;
-	}
-	public void setLikes(List<CdLikeEntity> likes) {
-		this.likes = likes;
-	}
-	
-	@OneToMany (fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinTable(
-            name = "cd_articleShare",
-            joinColumns = @JoinColumn(name = "article", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "share", referencedColumnName = "id"))
-	public List<CdShareEntity> getShares() {
-		return shares;
-	}
-	public void setShares(List<CdShareEntity> shares) {
-		this.shares = shares;
-	}
-	
-	@OneToMany (fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinTable(
-            name = "cd_articleFavourite",
-            joinColumns = @JoinColumn(name = "article", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "favourite", referencedColumnName = "id"))
-	public List<CdFavouriteEntity> getFavourites() {
-		return favourites;
-	}
-	public void setFavourites(List<CdFavouriteEntity> favourites) {
-		this.favourites = favourites;
 	}
 	@Override
     public boolean equals(Object o) {

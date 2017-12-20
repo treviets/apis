@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/jee
+        http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+    <jee:jndi-lookup id="cdSpringProfilesActive" jndi-name="java:/comp/env/cd/springProfilesActive"
+                     expected-type="java.lang.String"/>
+
+    <jee:jndi-lookup id="cdPathProtocol" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/path/protocol"
+                     expected-type="java.lang.String"/>
+
+    <jee:jndi-lookup id="cdPathBaseURL" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/path/baseurl"
+                     expected-type="java.lang.String"/>
+
+    <jee:jndi-lookup id="cdPathKernalBillHTMLPageURL" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/path/kernal/bill/html/page"
+                     expected-type="java.lang.String"/>
+
+    <jee:jndi-lookup id="cdPathKernalBillPDFPageURL" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/path/kernal/bill/pdf/page"
+                     expected-type="java.lang.String"/>
+
+    <jee:jndi-lookup id="cdKeyGoogleAPI" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/key/google/api"
+                     expected-type="java.lang.String"/>
+
+    <jee:jndi-lookup id="cdExceptionDatabase" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/exception/database"
+                     expected-type="java.lang.Boolean"/>
+
+    <jee:jndi-lookup id="cdException2Frontent" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/exception/2frontend"
+                     expected-type="java.lang.Boolean"/>
+
+    <jee:jndi-lookup id="cdPathAsset" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/path/asset"
+                     expected-type="java.lang.String"/>
+
+    <jee:jndi-lookup id="cdLengthRegistrationVerifiCode" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/length/registration/verifi/code"
+                     expected-type="java.lang.Integer"/>
+
+    <jee:jndi-lookup id="cdLengthRegistrationVerifiTTL" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/length/registration/verifi/ttl"
+                     expected-type="java.lang.Integer"/>
+
+    <jee:jndi-lookup id="cdLengthResetPasswordVerifiCode" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/length/resetpassword/verifi/code"
+                     expected-type="java.lang.Integer"/>
+
+    <jee:jndi-lookup id="cdLengthResetPasswordVerifiTTL" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/length/resetpassword/verifi/ttl"
+                     expected-type="java.lang.Integer"/>
+
+    <jee:jndi-lookup id="cdLengthResetPasswordTemporaryCode" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/length/resetpassword/temporary/code"
+                     expected-type="java.lang.Integer"/>
+
+    <jee:jndi-lookup id="cdLengthResetPasswordTemporaryTTL" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/length/resetpassword/temporary/ttl"
+                     expected-type="java.lang.Integer"/>
+
+    <jee:jndi-lookup id="cdLengthBillindDueAd" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/length/billing/due/ad"
+                     expected-type="java.lang.Integer"/>
+
+    <jee:jndi-lookup id="cdCurrencyBilling" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/currency/billing"
+                     expected-type="java.lang.String"/>
+
+    <jee:jndi-lookup id="cdExternMailVendor" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/extern/mail/vendor"
+                     expected-type="java.lang.String"/>
+
+    <jee:jndi-lookup id="cdExternMailFromName" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/extern/mail/fromname"
+                     expected-type="java.lang.String"/>
+
+    <jee:jndi-lookup id="cdExternMailBcc" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/extern/mail/bcc"
+                     expected-type="java.lang.String"/>
+
+    <jee:jndi-lookup id="cdExternSMSVendor" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/extern/sms/vendor"
+                     expected-type="java.lang.String"/>
+
+    <jee:jndi-lookup id="cdExternSMSPrefix" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/extern/sms/prefix"
+                     expected-type="java.lang.Integer"/>
+
+    <jee:jndi-lookup id="cdKeyAES256IvParameterSpec" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/key/aes256/ivparameterspec"
+                     expected-type="java.lang.String"/>
+
+    <jee:jndi-lookup id="cdKeyAES256SecretKeySpec" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/key/aes256/secretkeyspec"
+                     expected-type="java.lang.String"/>
+
+    <jee:jndi-lookup id="cdMailTemplate" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/mail/template"
+                     expected-type="java.lang.Integer"/>
+
+    <jee:jndi-lookup id="cdInvoiceTemplateHTML" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/invoice/template/html"
+                     expected-type="java.lang.Integer"/>
+
+    <jee:jndi-lookup id="cdInvoiceTemplatePDF" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/invoice/template/pdf"
+                     expected-type="java.lang.Integer"/>
+
+    <jee:jndi-lookup id="cdExternPayPalRESTAPIClientId" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/extern/paypal/rest/api/clientid"
+                     expected-type="java.lang.String"/>
+
+    <jee:jndi-lookup id="cdExternPayPalRESTAPIClientSecret" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/extern/paypal/rest/api/secret"
+                     expected-type="java.lang.String"/>
+
+    <jee:jndi-lookup id="cdExternPayPalRESTAPIEnv" jndi-name="java:/comp/env/cd/#{cdSpringProfilesActive}/extern/paypal/rest/api/env"
+                     expected-type="java.lang.String"/>
+
+</beans>

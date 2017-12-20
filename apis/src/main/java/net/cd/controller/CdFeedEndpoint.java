@@ -120,20 +120,8 @@ public class CdFeedEndpoint extends BaseEndpoint {
         return true;
     }
 	
-	@RequestMapping(value = "/{reference}/comment", method = RequestMethod.GET)
-    @ApiOperation("Fetch all comments of feeds")
-    public List<CdCommentDto> fetchCommentFeeds(@PathVariable String reference) throws Exception {
-        CdFeedDto feed = feedService.findByReference(reference);
-        if(feed == null || feed.getId() == null) {
-        		throw new CdException(CdErrors.CD_K_RESOURCE_NOT_EXISTS);
-        }
-        return feed.getArticle().getComments();
-    }
-	
-	
-	@PreAuthorize("hasRole('CD_ROLE_REGISTRANT')")
 	@RequestMapping(value = "/{reference}/comment", method = RequestMethod.POST)
-    @ApiOperation("Post comment for feed")
+    @ApiOperation("Fetch member details")
     public boolean addCommentFeeds(@PathVariable String reference, @RequestBody CdCommentDto cdCommentDto) throws Exception {
         CdFeedDto feed = feedService.findByReference(reference);
         CdKMemberDto member = memberService.findOne(userUtil.getUserLoginId());
@@ -144,7 +132,7 @@ public class CdFeedEndpoint extends BaseEndpoint {
         cdCommentDto.setAuthor(member);
         feed.getArticle().getComments().add(cdCommentDto);
         feedService.save(feed);
-        response.setStatus(HttpServletResponse.SC_CREATED);
+        
         return true;
     }
 
