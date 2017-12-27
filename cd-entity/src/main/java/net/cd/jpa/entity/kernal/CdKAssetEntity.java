@@ -28,6 +28,7 @@ public class CdKAssetEntity {
     private Timestamp made;
     private Timestamp revised;
     private Timestamp purged;
+	private CdArticleEntity article;
 
     @Id
     @Column(name = "id")
@@ -170,6 +171,15 @@ public class CdKAssetEntity {
         this.purged = purged;
     }
 
+    @ManyToOne
+	public CdArticleEntity getArticle() {
+		return article;
+	}
+
+	public void setArticle(CdArticleEntity article) {
+		this.article = article;
+	}
+	
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

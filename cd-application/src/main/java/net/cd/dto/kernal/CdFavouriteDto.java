@@ -7,6 +7,8 @@ public class CdFavouriteDto {
 	private CdKMemberDto author;
 	private String made;
 	private String revised;
+	@JsonIgnore
+	private CdArticleDto article;
 	
 	@JsonIgnore
 	private String purged;
@@ -40,4 +42,11 @@ public class CdFavouriteDto {
 	public void setPurged(String purged) {
 		this.purged = purged;
 	}
+	public CdArticleDto getArticle() {
+		return article;
+	}
+	public void setArticle(CdArticleDto article) {
+		this.article = article;
+	}
+	
 }

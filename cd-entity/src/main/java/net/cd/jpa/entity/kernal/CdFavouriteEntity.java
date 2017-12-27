@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,7 +23,8 @@ public class CdFavouriteEntity {
 	private String made;
 	private String revised;
 	private String purged;
-
+	private CdArticleEntity article;
+	
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -75,6 +77,14 @@ public class CdFavouriteEntity {
 		this.purged = purged;
 	}
 
+	@ManyToOne
+	public CdArticleEntity getArticle() {
+		return article;
+	}
+
+	public void setArticle(CdArticleEntity article) {
+		this.article = article;
+	}
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)

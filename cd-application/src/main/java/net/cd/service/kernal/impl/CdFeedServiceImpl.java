@@ -33,7 +33,7 @@ public class CdFeedServiceImpl implements CdFeedService {
         CdFeedEntity cdFeedEntity = new CdFeedEntity();
         mapper.map(cdFeedDto, cdFeedEntity);
         
-        mapper.map(cdKFeedRepository.save(cdFeedEntity),cdFeedDto);
+        mapper.map(cdKFeedRepository.saveAndFlush(cdFeedEntity),cdFeedDto);
 		return cdFeedDto;
 	}
 

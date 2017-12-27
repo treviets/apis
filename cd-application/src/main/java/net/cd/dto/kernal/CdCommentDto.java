@@ -9,6 +9,8 @@ public class CdCommentDto {
 	private String made;
 	private String revised;
 	@JsonIgnore
+	private CdArticleDto article;
+	@JsonIgnore
 	private String purged;
 	
 	public Integer getId() {
@@ -46,6 +48,12 @@ public class CdCommentDto {
 	}
 	public void setPurged(String purged) {
 		this.purged = purged;
+	}
+	public CdArticleDto getArticle() {
+		return article;
+	}
+	public void setArticle(CdArticleDto article) {
+		this.article = article;
 	}
 	
 	

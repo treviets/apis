@@ -9,8 +9,8 @@ import net.cd.dto.kernal.CdCommentDto;
  */
 public interface CdCommentService {
 
-    CdCommentDto save(CdCommentDto cdFeedDto);
-    boolean delete(CdCommentDto cdFeedDto);
+    CdCommentDto save(CdCommentDto cdCommentDto);
+    boolean delete(CdCommentDto cdCommentDto);
     List<CdCommentDto> findAll();
 }
  

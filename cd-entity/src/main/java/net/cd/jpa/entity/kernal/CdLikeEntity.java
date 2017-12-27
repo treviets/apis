@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,6 +23,7 @@ public class CdLikeEntity {
 	private String made;
 	private String revised;
 	private String purged;
+	private CdArticleEntity article;
 
 	@Id
 	@Column(name = "id")
@@ -73,6 +75,17 @@ public class CdLikeEntity {
 
 	public void setPurged(String purged) {
 		this.purged = purged;
+	}
+	
+	
+
+	@ManyToOne
+	public CdArticleEntity getArticle() {
+		return article;
+	}
+
+	public void setArticle(CdArticleEntity article) {
+		this.article = article;
 	}
 
 	@Override

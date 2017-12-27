@@ -3,15 +3,12 @@ package net.cd.jpa.entity.kernal;
 import java.util.List;
 
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -93,12 +90,8 @@ public class CdArticleEntity {
 	}
 	
 	
-	@OneToMany (fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinTable(
-            name = "cd_articleImage",
-            joinColumns = @JoinColumn(name = "article", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "asset", referencedColumnName = "id"))
-    public List<CdKAssetEntity> getPhotos() {
+	@OneToMany(mappedBy="article", fetch=FetchType.EAGER)
+	public List<CdKAssetEntity> getPhotos() {
 		return photos;
 	}
 	public void setPhotos(List<CdKAssetEntity> photos) {
@@ -106,11 +99,8 @@ public class CdArticleEntity {
 	}
 	
 	
-	@OneToMany (fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinTable(
-            name = "cd_articleComment",
-            joinColumns = @JoinColumn(name = "article", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "comment", referencedColumnName = "id"))
+
+	@OneToMany(mappedBy="article", fetch=FetchType.EAGER)
 	public List<CdCommentEntity> getComments() {
 		return comments;
 	}
@@ -118,11 +108,7 @@ public class CdArticleEntity {
 		this.comments = comments;
 	}
 	
-	@OneToMany (fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinTable(
-            name = "cd_articleLike",
-            joinColumns = @JoinColumn(name = "article", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "like", referencedColumnName = "id"))
+	@OneToMany(mappedBy="article", fetch = FetchType.EAGER)
 	public List<CdLikeEntity> getLikes() {
 		return likes;
 	}
@@ -130,11 +116,7 @@ public class CdArticleEntity {
 		this.likes = likes;
 	}
 	
-	@OneToMany (fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinTable(
-            name = "cd_articleShare",
-            joinColumns = @JoinColumn(name = "article", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "share", referencedColumnName = "id"))
+	@OneToMany(mappedBy="article", fetch=FetchType.EAGER)
 	public List<CdShareEntity> getShares() {
 		return shares;
 	}
@@ -142,11 +124,7 @@ public class CdArticleEntity {
 		this.shares = shares;
 	}
 	
-	@OneToMany (fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinTable(
-            name = "cd_articleFavourite",
-            joinColumns = @JoinColumn(name = "article", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "favourite", referencedColumnName = "id"))
+	@OneToMany(mappedBy="article", fetch=FetchType.EAGER)
 	public List<CdFavouriteEntity> getFavourites() {
 		return favourites;
 	}

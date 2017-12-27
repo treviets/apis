@@ -19,10 +19,13 @@ import net.cd.common.web.BaseEndpoint;
 import net.cd.dto.kernal.CdCommentDto;
 import net.cd.dto.kernal.CdFeedDto;
 import net.cd.dto.kernal.CdKMemberDto;
+import net.cd.dto.kernal.CdLikeDto;
 import net.cd.exception.CdErrors;
 import net.cd.exception.CdException;
+import net.cd.service.kernal.CdCommentService;
 import net.cd.service.kernal.CdFeedService;
 import net.cd.service.kernal.CdKMemberService;
+import net.cd.service.kernal.CdLikeService;
 
 /**
  * Created by Vincent on 07/12/2017.
@@ -38,7 +41,13 @@ public class CdFeedEndpoint extends BaseEndpoint {
 	
 	@Autowired
 	private CdKMemberService memberService;
+	
+	@Autowired
+	private CdCommentService commentService;
 
+	@Autowired
+	private CdLikeService likeService;
+	
 	@Autowired
 	UserUtil userUtil;
 	
@@ -142,10 +151,33 @@ public class CdFeedEndpoint extends BaseEndpoint {
         		throw new CdException(CdErrors.CD_K_COMMENT_NOT_EXISTS);
         }
         cdCommentDto.setAuthor(member);
-        feed.getArticle().getComments().add(cdCommentDto);
-        feedService.save(feed);
+        cdCommentDto.setArticle(feed.getArticle());
+        commentService.save(cdCommentDto);
         response.setStatus(HttpServletResponse.SC_CREATED);
         return true;
     }
 
+	@RequestMapping(value = "/{reference}/like", method = RequestMethod.GET)
+    @ApiOperation("Get likes of feed")
+    public List<CdLikeDto> getLikeFeeds(@PathVariable String reference) throws Exception {
+        CdFeedDto feed = feedService.findByReference(reference);
+        if(feed == null) {
+        		throw new CdException(CdErrors.CD_K_RESOURCE_NOT_EXISTS);
+        }
+        return feed.getArticle().getLikes();
+    }
+	
+	@PreAuthorize("hasRole('CD_ROLE_REGISTRANT')")
+	@RequestMapping(value = "/{reference}/like", method = RequestMethod.POST)
+    @ApiOperation("Post like for feed")
+    public boolean addLikeFeeds(@PathVariable String reference) throws Exception {
+        CdFeedDto feed = feedService.findByReference(reference);
+        CdKMemberDto member = memberService.findOne(userUtil.getUserLoginId());
+        CdLikeDto likeDto = new CdLikeDto();
+        likeDto.setAuthor(member);
+        likeDto.setArticle(feed.getArticle());
+        likeService.save(likeDto);
+        response.setStatus(HttpServletResponse.SC_CREATED);
+        return true;
+    }
 }
