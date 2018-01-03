@@ -121,7 +121,7 @@ public class CdCommentEntity {
 
 	@Override
 	public int hashCode() {
-		int result = id;
+		int result = id != null? id: 0;
 		result = 31 * result + (comment != null ? comment.hashCode() : 0);
 		result = 31 * result + (made != null ? made.hashCode() : 0);
 		result = 31 * result + (revised != null ? revised.hashCode() : 0);

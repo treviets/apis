@@ -1,6 +1,7 @@
 package net.cd.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -131,7 +132,7 @@ public class CdFeedEndpoint extends BaseEndpoint {
 	
 	@RequestMapping(value = "/{reference}/comment", method = RequestMethod.GET)
     @ApiOperation("Fetch all comments of feeds")
-    public List<CdCommentDto> fetchCommentFeeds(@PathVariable String reference) throws Exception {
+    public Set<CdCommentDto> fetchCommentFeeds(@PathVariable String reference) throws Exception {
         CdFeedDto feed = feedService.findByReference(reference);
         if(feed == null || feed.getId() == null) {
         		throw new CdException(CdErrors.CD_K_RESOURCE_NOT_EXISTS);
@@ -159,7 +160,7 @@ public class CdFeedEndpoint extends BaseEndpoint {
 
 	@RequestMapping(value = "/{reference}/like", method = RequestMethod.GET)
     @ApiOperation("Get likes of feed")
-    public List<CdLikeDto> getLikeFeeds(@PathVariable String reference) throws Exception {
+    public Set<CdLikeDto> getLikeFeeds(@PathVariable String reference) throws Exception {
         CdFeedDto feed = feedService.findByReference(reference);
         if(feed == null) {
         		throw new CdException(CdErrors.CD_K_RESOURCE_NOT_EXISTS);

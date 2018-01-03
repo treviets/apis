@@ -14,12 +14,8 @@ public class CdKMemberDto {
 
     @NotNull
     private Integer id;
-    @JsonIgnore
-    private String reference;
     @JsonProperty(value="avatar")
-    public String getAvatar() {
-    		return "http://150.95.104.147:8080/apis/kernel/asset/"+reference;
-    }
+    private String reference;
     @JsonProperty(value="username")
     private String identifier;
     @JsonIgnore
@@ -57,7 +53,12 @@ public class CdKMemberDto {
     public void setReference(String reference) {
         this.reference = reference;
     }
-
+    
+    @JsonProperty(value="avatarFullPath")
+    public String getAvatarFullParth() {
+	    return "http://150.95.104.147:8080/apis/kernel/asset/"+reference;
+	}
+    
     public String getIdentifier() {
         return identifier;
     }

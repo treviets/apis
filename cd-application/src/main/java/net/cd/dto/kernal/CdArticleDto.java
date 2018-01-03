@@ -1,6 +1,6 @@
 package net.cd.dto.kernal;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.validation.constraints.NotNull;
 
@@ -21,11 +21,11 @@ public class CdArticleDto {
 	private String revised;
 	@JsonIgnore
 	private String purged;
-	private List<CdKAssetDto> photos;
-	private List<CdCommentDto> comments;
-	private List<CdLikeDto> likes;
-	private List<CdShareDto> shares;
-	private List<CdFavouriteDto> favourites;
+	private Set<CdKAssetDto> photos;
+	private Set<CdCommentDto> comments;
+	private Set<CdLikeDto> likes;
+	private Set<CdShareDto> shares;
+	private Set<CdFavouriteDto> favourites;
 
 	
 	
@@ -103,27 +103,27 @@ public class CdArticleDto {
 		this.purged = purged;
 	}
 
-	public List<CdKAssetDto> getPhotos() {
+	public Set<CdKAssetDto> getPhotos() {
 		return photos;
 	}
 
-	public void setPhotos(List<CdKAssetDto> photos) {
+	public void setPhotos(Set<CdKAssetDto> photos) {
 		this.photos = photos;
 	}
 
-	public List<CdCommentDto> getComments() {
+	public Set<CdCommentDto> getComments() {
 		return comments;
 	}
 
-	public void setComments(List<CdCommentDto> comments) {
+	public void setComments(Set<CdCommentDto> comments) {
 		this.comments = comments;
 	}
 
-	public List<CdLikeDto> getLikes() {
+	public Set<CdLikeDto> getLikes() {
 		return likes;
 	}
 
-	public void setLikes(List<CdLikeDto> likes) {
+	public void setLikes(Set<CdLikeDto> likes) {
 		this.likes = likes;
 	}
 
@@ -132,19 +132,19 @@ public class CdArticleDto {
 		return likes != null ? likes.size() : 0;
 	}
 
-	public List<CdShareDto> getShares() {
+	public Set<CdShareDto> getShares() {
 		return shares;
 	}
 
-	public void setShares(List<CdShareDto> shares) {
+	public void setShares(Set<CdShareDto> shares) {
 		this.shares = shares;
 	}
 
-	public List<CdFavouriteDto> getFavourites() {
+	public Set<CdFavouriteDto> getFavourites() {
 		return favourites;
 	}
 
-	public void setFavourites(List<CdFavouriteDto> favourites) {
+	public void setFavourites(Set<CdFavouriteDto> favourites) {
 		this.favourites = favourites;
 	}
 

@@ -15,7 +15,8 @@ public class CdKAssetDto {
 
     @NotNull
     private Integer id;
-    @JsonIgnore
+    @JsonProperty(value="url")
+    @Transient
     private String reference;
     @JsonIgnore
     private String extern;
@@ -54,6 +55,10 @@ public class CdKAssetDto {
         this.reference = reference;
     }
 
+    @JsonProperty(value="avatarFullPath")
+    public String getAvatarFullParth() {
+	    return "http://150.95.104.147:8080/apis/kernel/asset/"+reference;
+	}
     public String getExtern() {
         return extern;
     }
@@ -114,8 +119,7 @@ public class CdKAssetDto {
     public Integer getLink() {
         return link;
     }
-    @JsonProperty(value="url")
-    @Transient
+    
     public String url() {
     		return "http://150.95.104.147:8080/apis/kernel/asset/"+reference;
     }

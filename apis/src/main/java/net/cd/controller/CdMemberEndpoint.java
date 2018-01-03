@@ -159,8 +159,8 @@ public class CdMemberEndpoint extends BaseEndpoint {
 
             
         } catch (Exception e) {
-            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            throw new CdException(CdErrors.CD_INTERNAL_SERVER_ERROR);
+        		response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            throw e;
         }
 
         response.setStatus(HttpServletResponse.SC_CREATED);

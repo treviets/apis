@@ -8,7 +8,7 @@ import org.xhtmlrenderer.simple.extend.URLUTF8Encoder;
 @Scope("singleton")
 public class SMSServiceUtil {
 
-	private final String SMS_SERVICE_URL = "http://210.211.108.20:9999/APIOneSend/sendsms.jsp?param=";
+	private final String SMS_SERVICE_URL = "http://210.211.108.20:9999/onsmsapi/sendsms.jsp?param=";
 
 	private final String SMS_SERVICE_USERNAME = "minhcanh";
 	private final String SMS_SERVIVE_PASSWORD = "minhcanh#@!";

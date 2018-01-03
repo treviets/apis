@@ -1,8 +1,9 @@
 package net.cd.jpa.entity.kernal;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,142 +20,157 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "cd_article")
 public class CdArticleEntity {
-	
+
 	private Integer id;
-    private String title;
-    private String description;
-    private String made;
-    private String revised;
-    private String purged;
-    private List<CdKAssetEntity> photos;
-    private List<CdCommentEntity> comments;
-    private List<CdLikeEntity> likes;
-    private List<CdShareEntity> shares;
-    private List<CdFavouriteEntity> favourites;
-    @Id
-    @Column(name="id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	private String title;
+	private String description;
+	private String made;
+	private String revised;
+	private String purged;
+	private Set<CdKAssetEntity> photos;
+	private Set<CdCommentEntity> comments;
+	private Set<CdLikeEntity> likes;
+	private Set<CdShareEntity> shares;
+	private Set<CdFavouriteEntity> favourites;
+
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	
+
 	@Basic
-	@Column(name="title")
+	@Column(name = "title")
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+
 	@Basic
-	@Column(name="description")
+	@Column(name = "description")
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
-	
+
 	@Basic
-	@Column(name="made")
+	@Column(name = "made")
 	public String getMade() {
 		return made;
 	}
+
 	public void setMade(String made) {
 		this.made = made;
 	}
-	
+
 	@Basic
-	@Column(name="revised")
+	@Column(name = "revised")
 	public String getRevised() {
 		return revised;
 	}
+
 	public void setRevised(String revised) {
 		this.revised = revised;
 	}
-	
+
 	@Basic
-	@Column(name="purged")
+	@Column(name = "purged")
 	public String getPurged() {
 		return purged;
 	}
+
 	public void setPurged(String purged) {
 		this.purged = purged;
 	}
-	
-	
-	@OneToMany(mappedBy="article", fetch=FetchType.EAGER)
-	public List<CdKAssetEntity> getPhotos() {
+
+	@OneToMany(mappedBy = "article", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	public Set<CdKAssetEntity> getPhotos() {
 		return photos;
 	}
-	public void setPhotos(List<CdKAssetEntity> photos) {
+
+	public void setPhotos(Set<CdKAssetEntity> photos) {
 		this.photos = photos;
 	}
-	
-	
 
-	@OneToMany(mappedBy="article", fetch=FetchType.EAGER)
-	public List<CdCommentEntity> getComments() {
+	@OneToMany(mappedBy = "article", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	public Set<CdCommentEntity> getComments() {
 		return comments;
 	}
-	public void setComments(List<CdCommentEntity> comments) {
+
+	public void setComments(Set<CdCommentEntity> comments) {
 		this.comments = comments;
 	}
-	
-	@OneToMany(mappedBy="article", fetch = FetchType.EAGER)
-	public List<CdLikeEntity> getLikes() {
+
+	@OneToMany(mappedBy = "article", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	public Set<CdLikeEntity> getLikes() {
 		return likes;
 	}
-	public void setLikes(List<CdLikeEntity> likes) {
+
+	public void setLikes(Set<CdLikeEntity> likes) {
 		this.likes = likes;
 	}
-	
-	@OneToMany(mappedBy="article", fetch=FetchType.EAGER)
-	public List<CdShareEntity> getShares() {
+
+	@OneToMany(mappedBy = "article", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	public Set<CdShareEntity> getShares() {
 		return shares;
 	}
-	public void setShares(List<CdShareEntity> shares) {
+
+	public void setShares(Set<CdShareEntity> shares) {
 		this.shares = shares;
 	}
-	
-	@OneToMany(mappedBy="article", fetch=FetchType.EAGER)
-	public List<CdFavouriteEntity> getFavourites() {
+
+	@OneToMany(mappedBy = "article", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	public Set<CdFavouriteEntity> getFavourites() {
 		return favourites;
 	}
-	public void setFavourites(List<CdFavouriteEntity> favourites) {
+
+	public void setFavourites(Set<CdFavouriteEntity> favourites) {
 		this.favourites = favourites;
 	}
+
 	@Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
 
-        CdArticleEntity that = (CdArticleEntity) o;
+		CdArticleEntity that = (CdArticleEntity) o;
 
-        if (id != that.id) return false;
-        if (title != null ? !title.equals(that.title) : that.title != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (made != null ? !made.equals(that.made) : that.made != null) return false;
-        if (revised != null ? !revised.equals(that.revised) : that.revised != null) return false;
-        if (purged != null ? !purged.equals(that.purged) : that.purged != null) return false;
-        return true;
-    }
+		if (id != that.id)
+			return false;
+		if (title != null ? !title.equals(that.title) : that.title != null)
+			return false;
+		if (description != null ? !description.equals(that.description) : that.description != null)
+			return false;
+		if (made != null ? !made.equals(that.made) : that.made != null)
+			return false;
+		if (revised != null ? !revised.equals(that.revised) : that.revised != null)
+			return false;
+		if (purged != null ? !purged.equals(that.purged) : that.purged != null)
+			return false;
+		return true;
+	}
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (made != null ? made.hashCode() : 0);
-        result = 31 * result + (revised != null ? revised.hashCode() : 0);
-        result = 31 * result + (purged != null ? purged.hashCode() : 0);
-        return result;
-    }
+	@Override
+	public int hashCode() {
+		int result = id;
+		result = 31 * result + (title != null ? title.hashCode() : 0);
+		result = 31 * result + (description != null ? description.hashCode() : 0);
+		result = 31 * result + (made != null ? made.hashCode() : 0);
+		result = 31 * result + (revised != null ? revised.hashCode() : 0);
+		result = 31 * result + (purged != null ? purged.hashCode() : 0);
+		return result;
+	}
 }

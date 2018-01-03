@@ -206,7 +206,7 @@ public class CdKAssetEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = id != null ? id : 0;
         result = 31 * result + (reference != null ? reference.hashCode() : 0);
         result = 31 * result + (md5 != null ? md5.hashCode() : 0);
         result = 31 * result + (mime != null ? mime.hashCode() : 0);
