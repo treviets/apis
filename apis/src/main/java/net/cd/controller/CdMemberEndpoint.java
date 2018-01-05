@@ -1,5 +1,7 @@
 package net.cd.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.igniterealtime.restclient.RestApiClient;
@@ -97,66 +99,72 @@ public class CdMemberEndpoint extends BaseEndpoint {
         			response.setStatus(HttpServletResponse.SC_EXPECTATION_FAILED);
         			return resultSMSSend+"|"+fullSMSServiceURL;
         		}
-        		cdKMemberDto = new CdKMemberDto();
+        		if(cdKMemberDto == null || cdKMemberDto.getId() == null) {
+        			cdKMemberDto = new CdKMemberDto();
+        		}
+        		
         		cdKMemberDto.setIdentifier(username);
             cdKMemberDto.setActivateCode(activateCode);
             cdKMemberDto.setActivated(UserConstant.STATUS_INACTIVATED);
             //Insert into member tabld first
             cdKMemberDto = cdKMemberService.save(cdKMemberDto);
+            
+            List<CdKAuthDto> listAuths = cdKAuthService.findByMember(cdKMemberDto.getId());
             //Then insert into authen table
-            CdKAuthDto oauth = new CdKAuthDto();
-            oauth.setMember(cdKMemberDto.getId());
-            oauth.setMethod(CdKAuthEntity.Method.OAUTH);
-            oauth.setSecret(new Md5PasswordEncoder().encodePassword(password,""));
-            cdKAuthService.save(oauth);
+            if( listAuths == null || listAuths.size() == 0) {
+	            CdKAuthDto oauth = new CdKAuthDto();
+	            oauth.setMember(cdKMemberDto.getId());
+	            oauth.setMethod(CdKAuthEntity.Method.OAUTH);
+	            oauth.setSecret(new Md5PasswordEncoder().encodePassword(password,""));
+	            cdKAuthService.save(oauth);
             
-            //Insert into member authen table
-            CdKMemberAuthDto memberOAuth = new CdKMemberAuthDto();
-            memberOAuth.setMember(cdKMemberDto);
-            memberOAuth.setAuth(oauth);
-            cdKMemberAuthService.save(memberOAuth);
-
-            //begin call to xmpp server for new jid and jid password
-            // TODO: switch to Bill service layer code for xmpp server invoking apis
-            AuthenticationToken authenticationToken = new AuthenticationToken(StatusUtil.XMPP_USER_NAME,
-                    StatusUtil.XMPP_PASSWORD);
-            RestApiClient restApiClient = new RestApiClient(StatusUtil.XMPP_DOMAIN, 9090, authenticationToken);
-            restApiClient.getRestClient();
-
-            RandomString randomString = new RandomString();
-            UserEntity userEntity;
-            String jid;
-            String passJid;
-            do {
-                jid = randomString.createUUID();
-                userEntity = restApiClient.getUser(jid);
-            } while (userEntity != null);
-            passJid = randomString.createUUID();
-
-            userEntity = new UserEntity(jid, null, null, passJid);
-            restApiClient.createUser(userEntity);
-            
-            //insert new row with xmpp method into auth table
-            CdKAuthDto authXMPP = new CdKAuthDto();
-            authXMPP.setMember(cdKMemberDto.getId());
-            authXMPP.setAccount(jid);
-            authXMPP.setSecret(passJid);
-            authXMPP.setMethod(CdKAuthEntity.Method.XMPP);
-            cdKAuthService.save(authXMPP);
-            //insert new row into member auth table
-            CdKMemberAuthDto memberAuthXMPP = new CdKMemberAuthDto();
-            memberAuthXMPP.setMember(cdKMemberDto);
-            memberAuthXMPP.setAuth(authXMPP);
-            cdKMemberAuthService.save(memberAuthXMPP);
-
-            //insert into member role table
-            CdKMemberRoleDto memberRole = new CdKMemberRoleDto();
-            memberRole.setMember(cdKMemberDto);
-            memberRole.setIdentity(MemberRoleRelativeIdentity.REGISTRANT);
-            memberRole.setIdentifier(1);
-            memberRole.setActive(UserConstant.STATUS_ACTIVATED);
-            cdKMemberRoleService.save(memberRole);
-
+	            //Insert into member authen table
+	            CdKMemberAuthDto memberOAuth = new CdKMemberAuthDto();
+	            memberOAuth.setMember(cdKMemberDto);
+	            memberOAuth.setAuth(oauth);
+	            cdKMemberAuthService.save(memberOAuth);
+        
+	            //begin call to xmpp server for new jid and jid password
+	            // TODO: switch to Bill service layer code for xmpp server invoking apis
+	            AuthenticationToken authenticationToken = new AuthenticationToken(StatusUtil.XMPP_USER_NAME,
+	                    StatusUtil.XMPP_PASSWORD);
+	            RestApiClient restApiClient = new RestApiClient(StatusUtil.XMPP_DOMAIN, 9090, authenticationToken);
+	            restApiClient.getRestClient();
+	
+	            RandomString randomString = new RandomString();
+	            UserEntity userEntity;
+	            String jid;
+	            String passJid;
+	            do {
+	                jid = randomString.createUUID();
+	                userEntity = restApiClient.getUser(jid);
+	            } while (userEntity != null);
+	            passJid = randomString.createUUID();
+	
+	            userEntity = new UserEntity(jid, null, null, passJid);
+	            restApiClient.createUser(userEntity);
+	            
+	            //insert new row with xmpp method into auth table
+	            CdKAuthDto authXMPP = new CdKAuthDto();
+	            authXMPP.setMember(cdKMemberDto.getId());
+	            authXMPP.setAccount(jid);
+	            authXMPP.setSecret(passJid);
+	            authXMPP.setMethod(CdKAuthEntity.Method.XMPP);
+	            cdKAuthService.save(authXMPP);
+	            //insert new row into member auth table
+	            CdKMemberAuthDto memberAuthXMPP = new CdKMemberAuthDto();
+	            memberAuthXMPP.setMember(cdKMemberDto);
+	            memberAuthXMPP.setAuth(authXMPP);
+	            cdKMemberAuthService.save(memberAuthXMPP);
+	
+	            //insert into member role table
+	            CdKMemberRoleDto memberRole = new CdKMemberRoleDto();
+	            memberRole.setMember(cdKMemberDto);
+	            memberRole.setIdentity(MemberRoleRelativeIdentity.REGISTRANT);
+	            memberRole.setIdentifier(1);
+	            memberRole.setActive(UserConstant.STATUS_ACTIVATED);
+	            cdKMemberRoleService.save(memberRole);
+            }
             
         } catch (Exception e) {
         		response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
