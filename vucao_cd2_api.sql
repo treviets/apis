@@ -30,7 +30,7 @@ CREATE TABLE `cd_article` (
   `revised` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   `purged` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,145 +39,8 @@ CREATE TABLE `cd_article` (
 
 LOCK TABLES `cd_article` WRITE;
 /*!40000 ALTER TABLE `cd_article` DISABLE KEYS */;
-INSERT INTO `cd_article` VALUES (1,'Test Feed Title','This is test feed description','2017-12-07 17:33:52','2017-12-07 17:34:42',NULL),(3,'Test Feed Title - updated','This is test feed description -updated',NULL,NULL,NULL),(4,'Test Feed Title of article for testing','This is test feed description -vincent test',NULL,NULL,NULL),(5,'Test Feed Title feed 3','This is test feed description feed 3',NULL,NULL,NULL),(6,'Test Feed Title feed 4','This is test feed description feed 4',NULL,NULL,NULL),(7,'Test Feed Title - updated','This is test feed description -updated',NULL,NULL,NULL),(8,'Test Feed Title feed 5','This is test feed description feed 5',NULL,NULL,NULL);
+INSERT INTO `cd_article` VALUES (1,'Test Feed Title','This is test feed description','2017-12-07 17:33:52','2017-12-07 17:34:42',NULL),(9,'Test Feed Title - updated','This is test feed description -updated',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `cd_article` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cd_articleComment`
---
-
-DROP TABLE IF EXISTS `cd_articleComment`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cd_articleComment` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `article` int(16) NOT NULL,
-  `comment` int(16) NOT NULL,
-  `made` timestamp NULL DEFAULT current_timestamp(),
-  `revised` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
-  `purged` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cd_articleComment`
---
-
-LOCK TABLES `cd_articleComment` WRITE;
-/*!40000 ALTER TABLE `cd_articleComment` DISABLE KEYS */;
-INSERT INTO `cd_articleComment` VALUES (3,1,1,'2017-12-10 15:36:12',NULL,NULL),(4,3,3,'2017-12-15 18:12:53',NULL,NULL),(6,7,4,'2017-12-18 06:59:13',NULL,NULL),(7,7,5,'2017-12-18 06:59:13',NULL,NULL);
-/*!40000 ALTER TABLE `cd_articleComment` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cd_articleFavourite`
---
-
-DROP TABLE IF EXISTS `cd_articleFavourite`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cd_articleFavourite` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `article` int(16) NOT NULL,
-  `favourite` int(16) NOT NULL,
-  `made` timestamp NULL DEFAULT current_timestamp(),
-  `revised` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
-  `purged` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cd_articleFavourite`
---
-
-LOCK TABLES `cd_articleFavourite` WRITE;
-/*!40000 ALTER TABLE `cd_articleFavourite` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cd_articleFavourite` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cd_articleImage`
---
-
-DROP TABLE IF EXISTS `cd_articleImage`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cd_articleImage` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `article` int(16) NOT NULL,
-  `asset` int(16) NOT NULL,
-  `made` timestamp NULL DEFAULT current_timestamp(),
-  `revised` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
-  `purged` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cd_articleImage`
---
-
-LOCK TABLES `cd_articleImage` WRITE;
-/*!40000 ALTER TABLE `cd_articleImage` DISABLE KEYS */;
-INSERT INTO `cd_articleImage` VALUES (1,1,1,'2017-12-07 17:34:13','2017-12-07 17:36:09',NULL),(2,1,1,'2017-12-08 15:40:35',NULL,NULL),(5,3,9,'2017-12-15 18:12:53',NULL,NULL),(10,5,14,'2017-12-17 02:36:52',NULL,NULL),(11,5,15,'2017-12-17 02:36:52',NULL,NULL),(12,6,16,'2017-12-17 02:38:24',NULL,NULL),(13,6,17,'2017-12-17 02:38:24',NULL,NULL),(21,7,23,'2017-12-18 06:59:13',NULL,NULL),(22,8,24,'2017-12-18 09:24:35',NULL,NULL),(23,8,25,'2017-12-18 09:24:35',NULL,NULL);
-/*!40000 ALTER TABLE `cd_articleImage` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cd_articleLike`
---
-
-DROP TABLE IF EXISTS `cd_articleLike`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cd_articleLike` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `article` int(16) NOT NULL,
-  `like` int(16) NOT NULL,
-  `made` timestamp NULL DEFAULT current_timestamp(),
-  `revised` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
-  `purged` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cd_articleLike`
---
-
-LOCK TABLES `cd_articleLike` WRITE;
-/*!40000 ALTER TABLE `cd_articleLike` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cd_articleLike` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cd_articleShare`
---
-
-DROP TABLE IF EXISTS `cd_articleShare`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cd_articleShare` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `article` int(16) NOT NULL,
-  `share` int(16) NOT NULL,
-  `made` timestamp NULL DEFAULT current_timestamp(),
-  `revised` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
-  `purged` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cd_articleShare`
---
-
-LOCK TABLES `cd_articleShare` WRITE;
-/*!40000 ALTER TABLE `cd_articleShare` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cd_articleShare` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -194,8 +57,9 @@ CREATE TABLE `cd_comment` (
   `made` timestamp NULL DEFAULT current_timestamp(),
   `revised` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   `purged` timestamp NULL DEFAULT NULL,
+  `article_id` int(16) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -204,7 +68,7 @@ CREATE TABLE `cd_comment` (
 
 LOCK TABLES `cd_comment` WRITE;
 /*!40000 ALTER TABLE `cd_comment` DISABLE KEYS */;
-INSERT INTO `cd_comment` VALUES (1,85,'Comment c·ªßa th√†nh vi√™n v·ªÅ b√†i vi·∫øt n√†y nh·ªØng ...','2017-12-10 15:33:46','2017-12-15 17:26:16',NULL),(3,85,'Comment c·ªßa th√†nh vi√™n v·ªÅ b√†i vi·∫øt n√†y nh·ªØng ...',NULL,NULL,NULL),(4,85,'vincent test',NULL,NULL,NULL),(5,85,'vincent test them cai nua',NULL,NULL,NULL);
+INSERT INTO `cd_comment` VALUES (11,85,'vincent comment 2',NULL,NULL,NULL,1),(12,85,'vincent comment 2',NULL,NULL,NULL,1),(13,85,'vincent comment 2',NULL,NULL,NULL,9),(14,85,'vincent comment 2',NULL,NULL,NULL,9);
 /*!40000 ALTER TABLE `cd_comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -218,6 +82,7 @@ DROP TABLE IF EXISTS `cd_favourite`;
 CREATE TABLE `cd_favourite` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `author` int(16) NOT NULL,
+  `article_id` int(16) DEFAULT NULL,
   `made` timestamp NULL DEFAULT current_timestamp(),
   `revised` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   `purged` timestamp NULL DEFAULT NULL,
@@ -251,7 +116,7 @@ CREATE TABLE `cd_feed` (
   `revised` timestamp NULL DEFAULT NULL,
   `purged` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -260,7 +125,7 @@ CREATE TABLE `cd_feed` (
 
 LOCK TABLES `cd_feed` WRITE;
 /*!40000 ALTER TABLE `cd_feed` DISABLE KEYS */;
-INSERT INTO `cd_feed` VALUES (1,'1-232323232dfffd',85,1,'PUBLIC','2017-12-08 16:52:10',NULL,NULL),(3,'3-dfdfsk334err3r43',85,4,'PUBLIC','2017-12-08 16:52:10',NULL,NULL),(4,'1ff3a0e8-e2d3-11e7-a0e3-f40f242f4caa',85,5,'PUBLIC','2017-12-08 16:52:10',NULL,NULL),(5,'56f857f0-e2d3-11e7-a0e3-f40f242f4caa',85,6,'PUBLIC','2017-12-08 16:52:10',NULL,NULL),(6,'8a68f23e-e2d3-11e7-a0e3-f40f242f4caa',85,7,'FRIEND','2017-12-08 16:52:10',NULL,NULL),(7,'42a1a114-e3d5-11e7-be1f-f40f242f4caa',85,8,'PUBLIC',NULL,NULL,NULL);
+INSERT INTO `cd_feed` VALUES (1,'1-232323232dfffd',85,1,'PUBLIC','2017-12-08 16:52:10',NULL,NULL),(8,'de8cc6ee-ecb8-11e7-ab81-f40f242f4caa',85,9,'FRIEND',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `cd_feed` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -306,9 +171,10 @@ CREATE TABLE `cd_kAsset` (
   `made` timestamp NULL DEFAULT current_timestamp(),
   `revised` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   `purged` timestamp NULL DEFAULT NULL,
+  `article_id` int(16) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index2` (`reference`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -317,7 +183,7 @@ CREATE TABLE `cd_kAsset` (
 
 LOCK TABLES `cd_kAsset` WRITE;
 /*!40000 ALTER TABLE `cd_kAsset` DISABLE KEYS */;
-INSERT INTO `cd_kAsset` VALUES (1,'3b9d3414-d9df-11e7-8303-0206965f6893','',NULL,'470511dd93ed9e69329500c83aa9a99c',NULL,'que-huong-4_11.jpg',NULL,'AVATAR',0,0,'2017-12-05 17:10:45',NULL,NULL),(2,'fb874aaf-da2b-11e7-8303-0206965f6893','',NULL,'470511dd93ed9e69329500c83aa9a99c',NULL,'que-huong-4_11.jpg',NULL,'AVATAR',0,0,'2017-12-06 02:20:09',NULL,NULL),(6,'4c52e71a-e1c1-11e7-a0e3-f40f242f4caa',NULL,NULL,NULL,NULL,NULL,'description 1',NULL,NULL,NULL,'2017-12-15 17:56:42',NULL,NULL),(7,'4c534264-e1c1-11e7-a0e3-f40f242f4caa',NULL,NULL,NULL,NULL,NULL,'description 2',NULL,NULL,NULL,'2017-12-15 17:56:42',NULL,NULL),(9,'8e99b1ba-e1c3-11e7-a0e3-f40f242f4caa',NULL,NULL,NULL,NULL,NULL,'description 7',NULL,NULL,NULL,'2017-12-15 18:12:53',NULL,NULL),(10,'df98bd10-e27a-11e7-a0e3-f40f242f4caa',NULL,NULL,NULL,NULL,NULL,'description 1',NULL,NULL,NULL,'2017-12-16 16:05:07',NULL,NULL),(11,'df99122e-e27a-11e7-a0e3-f40f242f4caa',NULL,NULL,NULL,NULL,NULL,'description 2',NULL,NULL,NULL,'2017-12-16 16:05:07',NULL,NULL),(12,'63ce00ee-e2d1-11e7-a0e3-f40f242f4caa',NULL,NULL,NULL,NULL,NULL,'description 7',NULL,NULL,NULL,'2017-12-17 02:24:27',NULL,NULL),(13,'8cea0de2-e2d1-11e7-a0e3-f40f242f4caa',NULL,NULL,NULL,NULL,NULL,'description 7',NULL,NULL,NULL,'2017-12-17 02:25:36',NULL,NULL),(14,'1ff30be2-e2d3-11e7-a0e3-f40f242f4caa',NULL,NULL,NULL,NULL,NULL,'description 1',NULL,NULL,NULL,'2017-12-17 02:36:52',NULL,NULL),(15,'1ff36bdc-e2d3-11e7-a0e3-f40f242f4caa',NULL,NULL,NULL,NULL,NULL,'description 2',NULL,NULL,NULL,'2017-12-17 02:36:52',NULL,NULL),(16,'56f7fdbe-e2d3-11e7-a0e3-f40f242f4caa',NULL,NULL,NULL,NULL,NULL,'description 1',NULL,NULL,NULL,'2017-12-17 02:38:24',NULL,NULL),(17,'56f83496-e2d3-11e7-a0e3-f40f242f4caa',NULL,NULL,NULL,NULL,NULL,'description 2',NULL,NULL,NULL,'2017-12-17 02:38:24',NULL,NULL),(18,'8a67b2f2-e2d3-11e7-a0e3-f40f242f4caa',NULL,NULL,NULL,NULL,NULL,'description 1',NULL,NULL,NULL,'2017-12-17 02:39:50',NULL,NULL),(19,'8a67daac-e2d3-11e7-a0e3-f40f242f4caa',NULL,NULL,NULL,NULL,NULL,'description 2',NULL,NULL,NULL,'2017-12-17 02:39:50',NULL,NULL),(20,'0f580700-e2d4-11e7-a0e3-f40f242f4caa',NULL,NULL,NULL,NULL,NULL,'description 7 update',NULL,NULL,NULL,'2017-12-17 02:43:34',NULL,NULL),(21,'2ad0ccd8-e2d4-11e7-a0e3-f40f242f4caa',NULL,NULL,NULL,NULL,NULL,'description 7 update',NULL,NULL,NULL,'2017-12-17 02:44:20',NULL,NULL),(22,'5f5d9db4-e2d4-11e7-a0e3-f40f242f4caa',NULL,NULL,NULL,NULL,NULL,'description 7 update',NULL,NULL,NULL,'2017-12-17 02:45:48',NULL,NULL),(23,'a7955996-e2d4-11e7-a0e3-f40f242f4caa',NULL,NULL,NULL,NULL,NULL,'description 7 update',NULL,NULL,NULL,'2017-12-17 02:47:49',NULL,NULL),(24,'42a0a368-e3d5-11e7-be1f-f40f242f4caa',NULL,NULL,NULL,NULL,NULL,'description 1',NULL,NULL,NULL,'2017-12-18 09:24:35',NULL,NULL),(25,'42a11668-e3d5-11e7-be1f-f40f242f4caa',NULL,NULL,NULL,NULL,NULL,'description 2',NULL,NULL,NULL,'2017-12-18 09:24:35',NULL,NULL);
+INSERT INTO `cd_kAsset` VALUES (1,'3b9d3414-d9df-11e7-8303-0206965f6893','',NULL,'470511dd93ed9e69329500c83aa9a99c',NULL,'que-huong-4_11.jpg',NULL,'AVATAR',0,0,'2017-12-05 17:10:45',NULL,NULL,NULL),(26,'3b9d3414-d9df-11e7-8303-0206965f6893',NULL,NULL,NULL,NULL,NULL,'description 7 update',NULL,NULL,NULL,'2017-12-30 03:59:00',NULL,NULL,9);
 /*!40000 ALTER TABLE `cd_kAsset` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -359,7 +225,7 @@ CREATE TABLE `cd_kAuth` (
   `revised` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   `purged` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -368,7 +234,7 @@ CREATE TABLE `cd_kAuth` (
 
 LOCK TABLES `cd_kAuth` WRITE;
 /*!40000 ALTER TABLE `cd_kAuth` DISABLE KEYS */;
-INSERT INTO `cd_kAuth` VALUES (61,85,NULL,'e10adc3949ba59abbe56e057f20f883e','OAUTH',NULL,'2017-12-12 05:22:34',NULL,NULL),(62,85,'02ecb495-4944-4334-9496-354f7c18d70e','90b781bc-8300-4f94-b5e2-2f1b39b57923','XMPP',NULL,'2017-12-12 05:22:35',NULL,NULL);
+INSERT INTO `cd_kAuth` VALUES (61,85,NULL,'e10adc3949ba59abbe56e057f20f883e','OAUTH',NULL,'2017-12-12 05:22:34',NULL,NULL),(62,85,'02ecb495-4944-4334-9496-354f7c18d70e','90b781bc-8300-4f94-b5e2-2f1b39b57923','XMPP',NULL,'2017-12-12 05:22:35',NULL,NULL),(63,86,NULL,'e10adc3949ba59abbe56e057f20f883e','OAUTH',NULL,'2018-01-02 17:00:00',NULL,NULL),(64,86,'e6bc4d48-26a3-47d6-b3ca-b671d5ff1828','db8d85ac-bfa4-44ac-9356-4da4a2d7812a','XMPP',NULL,'2018-01-02 17:00:01',NULL,NULL),(69,89,NULL,'e10adc3949ba59abbe56e057f20f883e','OAUTH',NULL,'2018-01-05 04:05:37',NULL,NULL),(70,89,'fa379ce1-3df3-4758-a5df-e56be8f3afa2','8a82de0a-c0aa-47a5-8860-167a89025733','XMPP',NULL,'2018-01-05 04:05:37',NULL,NULL),(71,90,NULL,'e10adc3949ba59abbe56e057f20f883e','OAUTH',NULL,'2018-01-05 04:08:20',NULL,NULL),(72,90,'0e606562-f286-48bf-85f9-e2bb98b107a4','54474a86-5cb4-4e51-90ac-fe49a6a31b49','XMPP',NULL,'2018-01-05 04:08:20',NULL,NULL);
 /*!40000 ALTER TABLE `cd_kAuth` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -587,6 +453,7 @@ CREATE TABLE `cd_kMember` (
   `birth` date DEFAULT NULL,
   `locale` varchar(8) DEFAULT NULL,
   `avatar` varchar(250) DEFAULT NULL,
+  `banner` varchar(250) DEFAULT NULL,
   `activated` int(1) DEFAULT 0,
   `made` timestamp NULL DEFAULT current_timestamp(),
   `revised` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
@@ -595,7 +462,7 @@ CREATE TABLE `cd_kMember` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQUE` (`email`),
   UNIQUE KEY `mobile_UNIQUE` (`mobile`)
-) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -604,7 +471,7 @@ CREATE TABLE `cd_kMember` (
 
 LOCK TABLES `cd_kMember` WRITE;
 /*!40000 ALTER TABLE `cd_kMember` DISABLE KEYS */;
-INSERT INTO `cd_kMember` VALUES (85,'748d417a-defc-11e7-998f-f40f242f4caa','0916273741',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,'2017-12-12 05:22:52',NULL,'408591');
+INSERT INTO `cd_kMember` VALUES (90,'0f172538-f1ce-11e7-9393-f40f242f4caa','0916273741',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'870772');
 /*!40000 ALTER TABLE `cd_kMember` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -643,7 +510,7 @@ CREATE TABLE `cd_kMemberAuth` (
   `revised` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   `purged` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -652,7 +519,7 @@ CREATE TABLE `cd_kMemberAuth` (
 
 LOCK TABLES `cd_kMemberAuth` WRITE;
 /*!40000 ALTER TABLE `cd_kMemberAuth` DISABLE KEYS */;
-INSERT INTO `cd_kMemberAuth` VALUES (57,85,61,'2017-12-12 05:22:34',NULL,NULL),(58,85,62,'2017-12-12 05:22:35',NULL,NULL);
+INSERT INTO `cd_kMemberAuth` VALUES (57,85,61,'2017-12-12 05:22:34',NULL,NULL),(58,85,62,'2017-12-12 05:22:35',NULL,NULL),(59,86,63,'2018-01-02 17:00:00',NULL,NULL),(60,86,64,'2018-01-02 17:00:01',NULL,NULL),(65,89,69,'2018-01-05 04:05:37',NULL,NULL),(66,89,70,'2018-01-05 04:05:37',NULL,NULL),(67,90,71,'2018-01-05 04:08:20',NULL,NULL),(68,90,72,'2018-01-05 04:08:20',NULL,NULL);
 /*!40000 ALTER TABLE `cd_kMemberAuth` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -674,7 +541,7 @@ CREATE TABLE `cd_kMemberRole` (
   `purged` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_cd_k_member_role_member_identity` (`member`,`identity`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -683,7 +550,7 @@ CREATE TABLE `cd_kMemberRole` (
 
 LOCK TABLES `cd_kMemberRole` WRITE;
 /*!40000 ALTER TABLE `cd_kMemberRole` DISABLE KEYS */;
-INSERT INTO `cd_kMemberRole` VALUES (17,76,1,'REGISTRANT',1,'2017-12-04 08:38:50',NULL,NULL),(18,77,1,'REGISTRANT',1,'2017-12-06 17:02:27',NULL,NULL),(19,79,1,'REGISTRANT',1,'2017-12-11 16:52:24',NULL,NULL),(20,80,1,'REGISTRANT',1,'2017-12-11 16:53:28',NULL,NULL),(21,82,1,'REGISTRANT',1,'2017-12-11 17:10:09',NULL,NULL),(22,83,1,'REGISTRANT',1,'2017-12-12 02:25:06',NULL,NULL),(23,84,1,'REGISTRANT',1,'2017-12-12 04:15:53',NULL,NULL),(24,85,1,'REGISTRANT',1,'2017-12-12 05:22:35',NULL,NULL);
+INSERT INTO `cd_kMemberRole` VALUES (17,76,1,'REGISTRANT',1,'2017-12-04 08:38:50',NULL,NULL),(18,77,1,'REGISTRANT',1,'2017-12-06 17:02:27',NULL,NULL),(19,79,1,'REGISTRANT',1,'2017-12-11 16:52:24',NULL,NULL),(20,80,1,'REGISTRANT',1,'2017-12-11 16:53:28',NULL,NULL),(21,82,1,'REGISTRANT',1,'2017-12-11 17:10:09',NULL,NULL),(22,83,1,'REGISTRANT',1,'2017-12-12 02:25:06',NULL,NULL),(23,84,1,'REGISTRANT',1,'2017-12-12 04:15:53',NULL,NULL),(24,85,1,'REGISTRANT',1,'2017-12-12 05:22:35',NULL,NULL),(25,86,1,'REGISTRANT',1,'2018-01-02 17:00:01',NULL,NULL),(26,87,1,'REGISTRANT',1,'2018-01-05 03:49:50',NULL,NULL),(28,89,1,'REGISTRANT',1,'2018-01-05 04:05:37',NULL,NULL),(29,90,1,'REGISTRANT',1,'2018-01-05 04:08:20',NULL,NULL);
 /*!40000 ALTER TABLE `cd_kMemberRole` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1091,11 +958,12 @@ DROP TABLE IF EXISTS `cd_like`;
 CREATE TABLE `cd_like` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `author` int(16) NOT NULL,
-  `made` timestamp NULL DEFAULT current_timestamp(),
+  `made` timestamp NOT NULL DEFAULT current_timestamp(),
   `revised` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   `purged` timestamp NULL DEFAULT NULL,
+  `article_id` int(16) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1104,6 +972,7 @@ CREATE TABLE `cd_like` (
 
 LOCK TABLES `cd_like` WRITE;
 /*!40000 ALTER TABLE `cd_like` DISABLE KEYS */;
+INSERT INTO `cd_like` VALUES (8,85,'2017-12-22 09:16:32',NULL,NULL,1),(9,85,'2017-12-27 04:55:50',NULL,NULL,1);
 /*!40000 ALTER TABLE `cd_like` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1120,6 +989,7 @@ CREATE TABLE `cd_share` (
   `made` timestamp NULL DEFAULT current_timestamp(),
   `revised` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   `purged` timestamp NULL DEFAULT NULL,
+  `article_id` int(16) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1464,7 +1334,7 @@ CREATE TABLE `cd_xOAuth2_access_token` (
 
 LOCK TABLES `cd_xOAuth2_access_token` WRITE;
 /*!40000 ALTER TABLE `cd_xOAuth2_access_token` DISABLE KEYS */;
-INSERT INTO `cd_xOAuth2_access_token` VALUES ('2017-12-18 09:41:39','0e35720b6f0c19d452dfb7d064f6a519','¨\Ì\0sr\0Corg.springframework.security.oauth2.common.DefaultOAuth2AccessToken≤û6$˙\Œ\0L\0additionalInformationt\0Ljava/util/Map;L\0\nexpirationt\0Ljava/util/Date;L\0refreshTokent\0?Lorg/springframework/security/oauth2/common/OAuth2RefreshToken;L\0scopet\0Ljava/util/Set;L\0	tokenTypet\0Ljava/lang/String;L\0valueq\0~\0xpsr\0java.util.LinkedHashMap4¿N\\l¿˚\0Z\0accessOrderxr\0java.util.HashMap\⁄¡\√`\—\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0jidt\0$02ecb495-4944-4334-9496-354f7c18d70et\0xmppPasswordt\0$90b781bc-8300-4f94-b5e2-2f1b39b57923x\0sr\0java.util.DatehjÅKYt\0\0xpw\0\0aòm\Êxsr\0Lorg.springframework.security.oauth2.common.DefaultExpiringOAuth2RefreshToken/\ﬂGcù\–…∑\0L\0\nexpirationq\0~\0xr\0Dorg.springframework.security.oauth2.common.DefaultOAuth2RefreshTokens\·\ncT\‘^\0L\0valueq\0~\0xpt\0$979bb4f4-4513-4e8b-8c58-87eb1dec19d2sq\0~\0w\0\0a~x†\nxsr\0%java.util.Collections$UnmodifiableSetÄí—èõÄU\0\0xr\0,java.util.Collections$UnmodifiableCollectionB\0Ä\À^˜\0L\0ct\0Ljava/util/Collection;xpsr\0java.util.LinkedHashSet\ÿl\◊Zï\›*\0\0xr\0java.util.HashSet∫DÖïñ∏∑4\0\0xpw\0\0\0?@\0\0\0\0\0t\0allxt\0bearert\0$7606e372-3653-434e-a008-556922e3963c','ced61440ad2f87ed34375d7bf069cb3d','0916273741','wrappy_app','¨\Ì\0sr\0Aorg.springframework.security.oauth2.provider.OAuth2AuthenticationΩ@bR\0L\0\rstoredRequestt\0<Lorg/springframework/security/oauth2/provider/OAuth2Request;L\0userAuthenticationt\02Lorg/springframework/security/core/Authentication;xr\0Gorg.springframework.security.authentication.AbstractAuthenticationToken”™(~nGd\0Z\0\rauthenticatedL\0authoritiest\0Ljava/util/Collection;L\0detailst\0Ljava/lang/Object;xp\0sr\0&java.util.Collections$UnmodifiableList¸%1µ\Ïé\0L\0listt\0Ljava/util/List;xr\0,java.util.Collections$UnmodifiableCollectionB\0Ä\À^˜\0L\0cq\0~\0xpsr\0java.util.ArrayListxÅ\“ô\«aù\0I\0sizexp\0\0\0w\0\0\0sr\0Borg.springframework.security.core.authority.SimpleGrantedAuthority\0\0\0\0\0\0@\0L\0rolet\0Ljava/lang/String;xpt\0CD_ROLE_REGISTRANTxq\0~\0psr\0:org.springframework.security.oauth2.provider.OAuth2Request\0\0\0\0\0\0\0\0Z\0approvedL\0authoritiesq\0~\0L\0\nextensionst\0Ljava/util/Map;L\0redirectUriq\0~\0L\0refresht\0;Lorg/springframework/security/oauth2/provider/TokenRequest;L\0resourceIdst\0Ljava/util/Set;L\0\rresponseTypesq\0~\0xr\08org.springframework.security.oauth2.provider.BaseRequest6(z>£qiΩ\0L\0clientIdq\0~\0L\0requestParametersq\0~\0L\0scopeq\0~\0xpt\0\nwrappy_appsr\0%java.util.Collections$UnmodifiableMapÒ•®˛tıB\0L\0mq\0~\0xpsr\0java.util.HashMap\⁄¡\√`\—\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0\ngrant_typet\0passwordt\0usernamet\0\n0916273741t\0scopet\0allxsr\0%java.util.Collections$UnmodifiableSetÄí—èõÄU\0\0xq\0~\0	sr\0java.util.LinkedHashSet\ÿl\◊Zï\›*\0\0xr\0java.util.HashSet∫DÖïñ∏∑4\0\0xpw\0\0\0?@\0\0\0\0\0q\0~\0!xsq\0~\0%w\0\0\0?@\0\0\0\0\0\0xsq\0~\0\Z?@\0\0\0\0\0\0w\0\0\0\0\0\0\0xppsr\0java.util.Collections$EmptySetır¥\À(\0\0xpsq\0~\0%w\0\0\0?@\0\0\0\0\0\0xsr\0Oorg.springframework.security.authentication.UsernamePasswordAuthenticationToken\0\0\0\0\0\0@\0L\0credentialsq\0~\0L\0	principalq\0~\0xq\0~\0sq\0~\0sq\0~\0\0\0\0w\0\0\0q\0~\0xq\0~\0/sr\0java.util.LinkedHashMap4¿N\\l¿˚\0Z\0accessOrderxq\0~\0\Z?@\0\0\0\0\0w\0\0\0\0\0\0q\0~\0q\0~\0q\0~\0q\0~\0q\0~\0 q\0~\0!x\0psr\0-net.cd.jpa.entity.security.AuthenticationUser\0\0\0\0\0\0\0\0L\0emailq\0~\0L\0idt\0Ljava/lang/Integer;L\0\nidentifierq\0~\0L\0jidq\0~\0L\0mobileq\0~\0L\0xmppPasswordq\0~\0xr\02org.springframework.security.core.userdetails.User\0\0\0\0\0\0@\0Z\0accountNonExpiredZ\0accountNonLockedZ\0credentialsNonExpiredZ\0enabledL\0authoritiesq\0~\0L\0passwordq\0~\0L\0usernameq\0~\0xpsq\0~\0\"sr\0java.util.TreeSet›òPìï\Ìá[\0\0xpsr\0Forg.springframework.security.core.userdetails.User$AuthorityComparator\0\0\0\0\0\0@\0\0xpw\0\0\0q\0~\0xpt\0\n0916273741psr\0java.lang.Integer‚†§˜Åá8\0I\0valuexr\0java.lang.NumberÜ¨ïî\‡ã\0\0xp\0\0\0Uq\0~\0;t\0$02ecb495-4944-4334-9496-354f7c18d70ept\0$90b781bc-8300-4f94-b5e2-2f1b39b57923','c21bc600aa43c50c624dec294192aca7');
+INSERT INTO `cd_xOAuth2_access_token` VALUES ('2017-12-29 16:48:27','0e35720b6f0c19d452dfb7d064f6a519','¨\Ì\0sr\0Corg.springframework.security.oauth2.common.DefaultOAuth2AccessToken≤û6$˙\Œ\0L\0additionalInformationt\0Ljava/util/Map;L\0\nexpirationt\0Ljava/util/Date;L\0refreshTokent\0?Lorg/springframework/security/oauth2/common/OAuth2RefreshToken;L\0scopet\0Ljava/util/Set;L\0	tokenTypet\0Ljava/lang/String;L\0valueq\0~\0xpsr\0java.util.LinkedHashMap4¿N\\l¿˚\0Z\0accessOrderxr\0java.util.HashMap\⁄¡\√`\—\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0jidt\0$02ecb495-4944-4334-9496-354f7c18d70et\0xmppPasswordt\0$90b781bc-8300-4f94-b5e2-2f1b39b57923x\0sr\0java.util.DatehjÅKYt\0\0xpw\0\0aòm\Êxsr\0Lorg.springframework.security.oauth2.common.DefaultExpiringOAuth2RefreshToken/\ﬂGcù\–…∑\0L\0\nexpirationq\0~\0xr\0Dorg.springframework.security.oauth2.common.DefaultOAuth2RefreshTokens\·\ncT\‘^\0L\0valueq\0~\0xpt\0$979bb4f4-4513-4e8b-8c58-87eb1dec19d2sq\0~\0w\0\0a~x†\nxsr\0%java.util.Collections$UnmodifiableSetÄí—èõÄU\0\0xr\0,java.util.Collections$UnmodifiableCollectionB\0Ä\À^˜\0L\0ct\0Ljava/util/Collection;xpsr\0java.util.LinkedHashSet\ÿl\◊Zï\›*\0\0xr\0java.util.HashSet∫DÖïñ∏∑4\0\0xpw\0\0\0?@\0\0\0\0\0t\0allxt\0bearert\0$7606e372-3653-434e-a008-556922e3963c','ced61440ad2f87ed34375d7bf069cb3d','0916273741','wrappy_app','¨\Ì\0sr\0Aorg.springframework.security.oauth2.provider.OAuth2AuthenticationΩ@bR\0L\0\rstoredRequestt\0<Lorg/springframework/security/oauth2/provider/OAuth2Request;L\0userAuthenticationt\02Lorg/springframework/security/core/Authentication;xr\0Gorg.springframework.security.authentication.AbstractAuthenticationToken”™(~nGd\0Z\0\rauthenticatedL\0authoritiest\0Ljava/util/Collection;L\0detailst\0Ljava/lang/Object;xp\0sr\0&java.util.Collections$UnmodifiableList¸%1µ\Ïé\0L\0listt\0Ljava/util/List;xr\0,java.util.Collections$UnmodifiableCollectionB\0Ä\À^˜\0L\0cq\0~\0xpsr\0java.util.ArrayListxÅ\“ô\«aù\0I\0sizexp\0\0\0w\0\0\0sr\0Borg.springframework.security.core.authority.SimpleGrantedAuthority\0\0\0\0\0\0@\0L\0rolet\0Ljava/lang/String;xpt\0CD_ROLE_REGISTRANTxq\0~\0psr\0:org.springframework.security.oauth2.provider.OAuth2Request\0\0\0\0\0\0\0\0Z\0approvedL\0authoritiesq\0~\0L\0\nextensionst\0Ljava/util/Map;L\0redirectUriq\0~\0L\0refresht\0;Lorg/springframework/security/oauth2/provider/TokenRequest;L\0resourceIdst\0Ljava/util/Set;L\0\rresponseTypesq\0~\0xr\08org.springframework.security.oauth2.provider.BaseRequest6(z>£qiΩ\0L\0clientIdq\0~\0L\0requestParametersq\0~\0L\0scopeq\0~\0xpt\0\nwrappy_appsr\0%java.util.Collections$UnmodifiableMapÒ•®˛tıB\0L\0mq\0~\0xpsr\0java.util.HashMap\⁄¡\√`\—\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0\ngrant_typet\0passwordt\0usernamet\0\n0916273741t\0scopet\0allxsr\0%java.util.Collections$UnmodifiableSetÄí—èõÄU\0\0xq\0~\0	sr\0java.util.LinkedHashSet\ÿl\◊Zï\›*\0\0xr\0java.util.HashSet∫DÖïñ∏∑4\0\0xpw\0\0\0?@\0\0\0\0\0q\0~\0!xsq\0~\0%w\0\0\0?@\0\0\0\0\0\0xsq\0~\0\Z?@\0\0\0\0\0\0w\0\0\0\0\0\0\0xppsr\0java.util.Collections$EmptySetır¥\À(\0\0xpsq\0~\0%w\0\0\0?@\0\0\0\0\0\0xsr\0Oorg.springframework.security.authentication.UsernamePasswordAuthenticationToken\0\0\0\0\0\0@\0L\0credentialsq\0~\0L\0	principalq\0~\0xq\0~\0sq\0~\0sq\0~\0\0\0\0w\0\0\0q\0~\0xq\0~\0/sr\0java.util.LinkedHashMap4¿N\\l¿˚\0Z\0accessOrderxq\0~\0\Z?@\0\0\0\0\0w\0\0\0\0\0\0q\0~\0q\0~\0q\0~\0q\0~\0q\0~\0 q\0~\0!x\0psr\0-net.cd.jpa.entity.security.AuthenticationUser\0\0\0\0\0\0\0\0L\0emailq\0~\0L\0idt\0Ljava/lang/Integer;L\0\nidentifierq\0~\0L\0jidq\0~\0L\0mobileq\0~\0L\0xmppPasswordq\0~\0xr\02org.springframework.security.core.userdetails.User\0\0\0\0\0\0@\0Z\0accountNonExpiredZ\0accountNonLockedZ\0credentialsNonExpiredZ\0enabledL\0authoritiesq\0~\0L\0passwordq\0~\0L\0usernameq\0~\0xpsq\0~\0\"sr\0java.util.TreeSet›òPìï\Ìá[\0\0xpsr\0Forg.springframework.security.core.userdetails.User$AuthorityComparator\0\0\0\0\0\0@\0\0xpw\0\0\0q\0~\0xpt\0\n0916273741psr\0java.lang.Integer‚†§˜Åá8\0I\0valuexr\0java.lang.NumberÜ¨ïî\‡ã\0\0xp\0\0\0Uq\0~\0;t\0$02ecb495-4944-4334-9496-354f7c18d70ept\0$90b781bc-8300-4f94-b5e2-2f1b39b57923','c21bc600aa43c50c624dec294192aca7');
 /*!40000 ALTER TABLE `cd_xOAuth2_access_token` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1622,4 +1492,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-18 16:42:35
+-- Dump completed on 2018-01-09  9:34:32
