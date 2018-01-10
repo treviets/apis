@@ -64,7 +64,7 @@ public class CdKernelLevelEndpoint {
     @Value("#{cdInvoiceTemplateHTML}")
     private Integer cdInvoiceTemplateHTML;
 
-    @RequestMapping(value = "/asset/retain", method = RequestMethod.POST)
+    @RequestMapping(value = "/asset", method = RequestMethod.POST)
     @ApiOperation("Retain digital asset")
     public CdXReferenceDto retainAsset(@RequestParam("file") MultipartFile file, @RequestParam String type) throws IOException, NoSuchAlgorithmException {
 

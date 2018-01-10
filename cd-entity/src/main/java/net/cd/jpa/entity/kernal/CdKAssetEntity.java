@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 public class CdKAssetEntity {
 
     public enum AssetTypes {
-        AVATAR, BRAND;
+    		AVATAR, FEED, ALBUM;
     }
 
     private Integer id;
@@ -112,7 +112,7 @@ public class CdKAssetEntity {
     }
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "type", columnDefinition = "ENUM('AVATAR', 'BRAND')")
+    @Column(name = "type", columnDefinition = "ENUM('AVATAR', 'FEED', 'ALBUM')")
     public AssetTypes getType() {
         return type;
     }
