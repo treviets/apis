@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import net.cd.jpa.entity.kernal.CdKMemberEntity;
 import net.cd.jpa.entity.kernal.CdLikeEntity;
 
 /**
@@ -12,4 +13,5 @@ import net.cd.jpa.entity.kernal.CdLikeEntity;
 public interface CdLikeRepository extends JpaRepository<CdLikeEntity, Integer> {
 
 	List<CdLikeEntity> findAllByPurgedIsNull();
+	List<CdLikeEntity> findByAuthorAndArticleId(CdKMemberEntity author, Integer articleId);
 }

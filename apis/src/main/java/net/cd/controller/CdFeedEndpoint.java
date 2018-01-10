@@ -181,4 +181,16 @@ public class CdFeedEndpoint extends BaseEndpoint {
         response.setStatus(HttpServletResponse.SC_CREATED);
         return true;
     }
+	
+	@PreAuthorize("hasRole('CD_ROLE_REGISTRANT')")
+	@RequestMapping(value = "/{reference}/like", method = RequestMethod.DELETE)
+    @ApiOperation("Un like  feed")
+    public boolean deleteLikeFeeds(@PathVariable String reference) throws Exception {
+        CdFeedDto feed = feedService.findByReference(reference);
+        CdKMemberDto member = memberService.findOne(userUtil.getUserLoginId());
+        List<CdLikeDto> likeDtos = likeService.findByAuthorAndArticleId(member, feed.getArticle());
+        likeService.delete(likeDtos);
+        response.setStatus(HttpServletResponse.SC_ACCEPTED);
+        return true;
+    }
 }
