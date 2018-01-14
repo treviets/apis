@@ -74,7 +74,7 @@ public class CdFeedEntity {
 		this.type = type;
 	}
 	
-	@OneToOne (cascade=CascadeType.DETACH)
+	@OneToOne (cascade=CascadeType.ALL)
     @JoinColumn(name = "author")
 	public CdKMemberEntity getAuthor() {
 		return author;

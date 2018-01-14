@@ -12,5 +12,6 @@ public interface CdCommentService {
     CdCommentDto save(CdCommentDto cdCommentDto);
     boolean delete(CdCommentDto cdCommentDto);
     List<CdCommentDto> findAll();
+    CdCommentDto findOne(Integer id);
 }
  

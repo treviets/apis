@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
@@ -167,6 +166,36 @@ public class CdFeedEndpoint extends BaseEndpoint {
         response.setStatus(HttpServletResponse.SC_CREATED);
         return true;
     }
+	
+	@PreAuthorize("hasRole('CD_ROLE_REGISTRANT')")
+	@RequestMapping(value = "/{reference}/comment", method = RequestMethod.DELETE)
+    @ApiOperation("delete comment for feed")
+    public boolean deleteCommentFeeds(@PathVariable String reference, @RequestBody CdCommentDto cdCommentDto) throws Exception {
+        CdFeedDto feed = feedService.findByReference(reference);
+        CdKMemberDto member = memberService.findOne(userUtil.getUserLoginId());
+        
+        if(cdCommentDto.getId() == null) {
+        		throw new CdException(CdErrors.CD_K_COMMENT_NOT_EXISTS);
+        }
+        Set<CdCommentDto> comments = feed.getArticle().getComments();
+        cdCommentDto = commentService.findOne(cdCommentDto.getId());
+        if(cdCommentDto == null) {
+        		throw new CdException(CdErrors.CD_K_COMMENT_NOT_EXISTS);
+        }
+        if(cdCommentDto.getAuthor().getId().intValue() != member.getId().intValue()) {
+        		throw new CdException(CdErrors.CD_ACCESS_IS_DENIED);
+        }
+        for (CdCommentDto comment : comments) {
+			if(comment.getId() == cdCommentDto.getId()) {
+				comments.remove(comment);
+				break;
+			}
+		}
+        feedService.save(feed);
+        
+        response.setStatus(HttpServletResponse.SC_ACCEPTED);
+        return true;
+    }
 
 	@RequestMapping(value = "/{reference}/like", method = RequestMethod.GET)
     @ApiOperation("Get likes of feed")
@@ -199,7 +228,20 @@ public class CdFeedEndpoint extends BaseEndpoint {
         CdFeedDto feed = feedService.findByReference(reference);
         CdKMemberDto member = memberService.findOne(userUtil.getUserLoginId());
         List<CdLikeDto> likeDtos = likeService.findByAuthorAndArticleId(member, feed.getArticle());
-        likeService.delete(likeDtos);
+        Set<CdLikeDto> likes = feed.getArticle().getLikes();
+        if(likes == null || likes.size() == 0) {
+        		throw new CdException(CdErrors.CD_K_RESOURCE_NOT_EXISTS);
+        }
+        
+        for (CdLikeDto like : likeDtos) {
+        		for(CdLikeDto l : likes) {
+        			if(like.getId() == l.getId()) {
+        				likes.remove(l);
+        				break;
+        			}
+        		}
+		}
+        feedService.save(feed);
         response.setStatus(HttpServletResponse.SC_ACCEPTED);
         return true;
     }

@@ -57,11 +57,21 @@ public class CdCommentServiceImpl implements CdCommentService {
 
 	@Override
 	public boolean delete(CdCommentDto cdCommentDto) {
-		CdCommentEntity cdCommentEntity = new CdCommentEntity();
-		ModelMapper mapper = new ModelMapper();
-		mapper.map(cdCommentDto, cdCommentEntity);
-		cdCommentRepository.delete(cdCommentEntity);
+		cdCommentRepository.delete(cdCommentDto.getId());
 		return true;
+	}
+
+
+	@Override
+	public CdCommentDto findOne(Integer id) {
+		CdCommentEntity cdCommentEntity = cdCommentRepository.findOne(id);
+		CdCommentDto cdCommentDto = new CdCommentDto();
+		if(cdCommentEntity == null) {
+			return null;
+		}
+		ModelMapper mapper = new ModelMapper();
+		mapper.map(cdCommentEntity, cdCommentDto);
+		return cdCommentDto;
 	}
    
 }

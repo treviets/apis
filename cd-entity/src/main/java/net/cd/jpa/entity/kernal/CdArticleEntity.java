@@ -103,7 +103,7 @@ public class CdArticleEntity {
 		this.photos = photos;
 	}
 
-	@OneToMany(mappedBy = "article", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "article", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	public Set<CdCommentEntity> getComments() {
 		return comments;
 	}
@@ -112,7 +112,7 @@ public class CdArticleEntity {
 		this.comments = comments;
 	}
 
-	@OneToMany(mappedBy = "article", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "article", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	public Set<CdLikeEntity> getLikes() {
 		return likes;
 	}
