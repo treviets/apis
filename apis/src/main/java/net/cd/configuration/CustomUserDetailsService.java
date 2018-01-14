@@ -42,12 +42,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 		List<CdKAuthEntity> auths = authRepository.findByMember(member.getId());
 		
 		CdKAuthEntity auth = null;
-		CdKAuthEntity xmppAuth = null;
 		for(CdKAuthEntity a : auths) {
 			if(a.getMethod() == Method.OAUTH) {
 				auth = a;
-			} else if(a.getMethod() == Method.XMPP) {
-				xmppAuth = a;
 			}
 		}
 		AuthenticationUser authenticationUser = new AuthenticationUser(member.getIdentifier(), auth.getSecret(),
@@ -56,8 +53,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 		authenticationUser.setId(member.getId());
 		authenticationUser.setIdentifier(member.getIdentifier());
 		authenticationUser.setMobile(member.getMobile());
-		authenticationUser.setJid(xmppAuth.getAccount());
-		authenticationUser.setXmppPassword(xmppAuth.getSecret());
 		
 		return authenticationUser;
 	}

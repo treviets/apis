@@ -19,9 +19,6 @@ public class CustomTokenEnhancer implements TokenEnhancer {
     		AuthenticationUser authenticationUser = (AuthenticationUser) authentication.getPrincipal();
         final Map<String, Object> additionalInfo = new HashMap<>();
         
-        additionalInfo.put("jid", authenticationUser.getJid());
-        additionalInfo.put("xmppPassword", authenticationUser.getXmppPassword());
-
         ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
 
         return accessToken;

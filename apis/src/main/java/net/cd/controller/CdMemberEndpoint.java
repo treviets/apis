@@ -4,9 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.igniterealtime.restclient.RestApiClient;
-import org.igniterealtime.restclient.entity.AuthenticationToken;
-import org.igniterealtime.restclient.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
@@ -18,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import net.cd.common.util.RandomString;
 import net.cd.common.util.SMSServiceUtil;
 import net.cd.common.util.StatusUtil;
 import net.cd.common.util.UserUtil;
@@ -93,12 +89,12 @@ public class CdMemberEndpoint extends BaseEndpoint {
         		String fullSMSServiceURL = smsServiceUtil.getFullSMSServiceURL(activateCode, username);
         		
         		smsVendor.setURL(fullSMSServiceURL);
-        		String resultSMSSend = smsVendor.send();
-        		if(!resultSMSSend.equals(String.valueOf(StatusUtil.SUCCESS_STATUS))){
-        			//set response status to 417
-        			response.setStatus(HttpServletResponse.SC_EXPECTATION_FAILED);
-        			return resultSMSSend+"|"+fullSMSServiceURL;
-        		}
+//        		String resultSMSSend = smsVendor.send();
+//        		if(!resultSMSSend.equals(String.valueOf(StatusUtil.SUCCESS_STATUS))){
+//        			//set response status to 417
+//        			response.setStatus(HttpServletResponse.SC_EXPECTATION_FAILED);
+//        			return resultSMSSend+"|"+fullSMSServiceURL;
+//        		}
         		if(cdKMemberDto == null || cdKMemberDto.getId() == null) {
         			cdKMemberDto = new CdKMemberDto();
         		}
@@ -123,39 +119,6 @@ public class CdMemberEndpoint extends BaseEndpoint {
 	            memberOAuth.setMember(cdKMemberDto);
 	            memberOAuth.setAuth(oauth);
 	            cdKMemberAuthService.save(memberOAuth);
-        
-	            //begin call to xmpp server for new jid and jid password
-	            // TODO: switch to Bill service layer code for xmpp server invoking apis
-	            AuthenticationToken authenticationToken = new AuthenticationToken(StatusUtil.XMPP_USER_NAME,
-	                    StatusUtil.XMPP_PASSWORD);
-	            RestApiClient restApiClient = new RestApiClient(StatusUtil.XMPP_DOMAIN, 9090, authenticationToken);
-	            restApiClient.getRestClient();
-	
-	            RandomString randomString = new RandomString();
-	            UserEntity userEntity;
-	            String jid;
-	            String passJid;
-	            do {
-	                jid = randomString.createUUID();
-	                userEntity = restApiClient.getUser(jid);
-	            } while (userEntity != null);
-	            passJid = randomString.createUUID();
-	
-	            userEntity = new UserEntity(jid, null, null, passJid);
-	            restApiClient.createUser(userEntity);
-	            
-	            //insert new row with xmpp method into auth table
-	            CdKAuthDto authXMPP = new CdKAuthDto();
-	            authXMPP.setMember(cdKMemberDto.getId());
-	            authXMPP.setAccount(jid);
-	            authXMPP.setSecret(passJid);
-	            authXMPP.setMethod(CdKAuthEntity.Method.XMPP);
-	            cdKAuthService.save(authXMPP);
-	            //insert new row into member auth table
-	            CdKMemberAuthDto memberAuthXMPP = new CdKMemberAuthDto();
-	            memberAuthXMPP.setMember(cdKMemberDto);
-	            memberAuthXMPP.setAuth(authXMPP);
-	            cdKMemberAuthService.save(memberAuthXMPP);
 	
 	            //insert into member role table
 	            CdKMemberRoleDto memberRole = new CdKMemberRoleDto();
