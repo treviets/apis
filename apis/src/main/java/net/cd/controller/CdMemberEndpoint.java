@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import net.cd.common.util.SMSServiceUtil;
-import net.cd.common.util.StatusUtil;
 import net.cd.common.util.UserUtil;
 import net.cd.common.util.constant.UserConstant;
 import net.cd.common.web.BaseEndpoint;

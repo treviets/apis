@@ -22,9 +22,15 @@ public class CdFeedEntity {
 	public enum FeedScope {
         PUBLIC, PRIVATE, FRIEND;
     }
+	
+	public enum FeedType {
+        FEED, NEWS;
+    }
+	
 	private Integer id;
 	private String reference;
 	private FeedScope scope;
+	private FeedType type;
 	private CdKMemberEntity author;
 	private CdArticleEntity article;
 	private String made;
@@ -59,6 +65,14 @@ public class CdFeedEntity {
 		this.scope = scope;
 	}
 	
+	@Enumerated(EnumType.STRING)
+	@Column(name="type")
+	public FeedType getType() {
+		return type;
+	}
+	public void setType(FeedType type) {
+		this.type = type;
+	}
 	
 	@OneToOne (cascade=CascadeType.DETACH)
     @JoinColumn(name = "author")

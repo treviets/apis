@@ -1,6 +1,7 @@
 package net.cd.dto.kernal;
 
 import net.cd.jpa.entity.kernal.CdFeedEntity.FeedScope;
+import net.cd.jpa.entity.kernal.CdFeedEntity.FeedType;
 
 public class CdFeedDto {
 	private Integer id;
@@ -8,6 +9,8 @@ public class CdFeedDto {
 	private CdKMemberDto author;
 	private CdArticleDto article;
 	private FeedScope scope;
+	private FeedType type;
+	
 	private String made;
 	private String revised;
     private String purged;
@@ -56,6 +59,18 @@ public class CdFeedDto {
 
 	public void setScope(FeedScope scope) {
 		this.scope = scope;
+	}
+
+
+	
+	
+	public FeedType getType() {
+		return type;
+	}
+
+
+	public void setType(FeedType type) {
+		this.type = type;
 	}
 
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
@@ -23,6 +24,7 @@ import net.cd.dto.kernal.CdKMemberDto;
 import net.cd.dto.kernal.CdLikeDto;
 import net.cd.exception.CdErrors;
 import net.cd.exception.CdException;
+import net.cd.jpa.entity.kernal.CdFeedEntity.FeedType;
 import net.cd.service.kernal.CdCommentService;
 import net.cd.service.kernal.CdFeedService;
 import net.cd.service.kernal.CdKMemberService;
@@ -53,9 +55,17 @@ public class CdFeedEndpoint extends BaseEndpoint {
 	UserUtil userUtil;
 	
     @RequestMapping(value = "", method = RequestMethod.GET)
-    @ApiOperation("Fetch member details")
+    @ApiOperation("Fetch all feed")
     public List<CdFeedDto> fetchFeeds() throws Exception {
-        List<CdFeedDto> feeds = feedService.findAll();
+    		
+    		List<CdFeedDto> feeds = feedService.findAll();
+        return feeds;
+    }
+    @RequestMapping(value = "/type/{feedType}/", method = RequestMethod.GET)
+    @ApiOperation("Fetch all feed by specific type")
+    public List<CdFeedDto> fetchFeedsByType(@PathVariable FeedType feedType) throws Exception {
+    		
+    		List<CdFeedDto> feeds = feedService.findAll(feedType);
         return feeds;
     }
     

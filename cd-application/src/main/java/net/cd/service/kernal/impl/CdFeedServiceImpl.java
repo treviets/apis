@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import net.cd.dto.kernal.CdFeedDto;
 import net.cd.jpa.entity.kernal.CdFeedEntity;
 import net.cd.jpa.entity.kernal.CdFeedEntity.FeedScope;
+import net.cd.jpa.entity.kernal.CdFeedEntity.FeedType;
 import net.cd.jpa.entity.kernal.CdKAssetEntity;
 import net.cd.jpa.entity.kernal.CdKMemberEntity;
 import net.cd.repository.kernal.CdFeedRepository;
@@ -44,8 +45,14 @@ public class CdFeedServiceImpl implements CdFeedService {
 	}
 
 	@Override
-	public List<CdFeedDto> findAll() {
-		List<CdFeedEntity> cdFeedEntities = cdKFeedRepository.findAll();
+	public List<CdFeedDto> findAll(FeedType... feedType) {
+		
+		List<CdFeedEntity> cdFeedEntities = null;
+		if(feedType != null && feedType.length > 0) {
+			cdFeedEntities = cdKFeedRepository.findByType(feedType[0]);
+		} else {
+			cdFeedEntities = cdKFeedRepository.findAll();
+		}
 		List<CdFeedDto> cdFeedDto = this.map(cdFeedEntities);
 		return cdFeedDto;
 	}
