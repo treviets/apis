@@ -30,7 +30,7 @@ CREATE TABLE `cd_article` (
   `revised` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   `purged` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `cd_article` (
 
 LOCK TABLES `cd_article` WRITE;
 /*!40000 ALTER TABLE `cd_article` DISABLE KEYS */;
-INSERT INTO `cd_article` VALUES (1,'Test Feed Title','This is test feed description','2017-12-07 17:33:52','2017-12-07 17:34:42',NULL),(9,'Test Feed Title - updated','This is test feed description -updated',NULL,NULL,NULL);
+INSERT INTO `cd_article` VALUES (1,'Test Feed Title','This is test feed description','2017-12-07 17:33:52','2017-12-07 17:34:42',NULL),(9,'Test Feed Title - updated','This is test feed description -updated',NULL,NULL,NULL),(10,'test 3','',NULL,NULL,NULL),(11,'test 3','',NULL,NULL,NULL),(12,'test 3','',NULL,NULL,NULL),(13,'test 3','',NULL,NULL,NULL),(14,'test 3','',NULL,NULL,NULL),(18,'test 3','description 3',NULL,NULL,NULL),(19,'test 3','description 3',NULL,NULL,NULL),(20,'test 3','description 3',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `cd_article` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,7 +59,7 @@ CREATE TABLE `cd_comment` (
   `purged` timestamp NULL DEFAULT NULL,
   `article_id` int(16) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +68,7 @@ CREATE TABLE `cd_comment` (
 
 LOCK TABLES `cd_comment` WRITE;
 /*!40000 ALTER TABLE `cd_comment` DISABLE KEYS */;
-INSERT INTO `cd_comment` VALUES (11,85,'vincent comment 2',NULL,NULL,NULL,1),(12,85,'vincent comment 2',NULL,NULL,NULL,1),(13,85,'vincent comment 2',NULL,NULL,NULL,9),(14,85,'vincent comment 2',NULL,NULL,NULL,9);
+INSERT INTO `cd_comment` VALUES (11,91,'vincent comment 2',NULL,NULL,NULL,9),(13,85,'vincent comment 2',NULL,NULL,NULL,9),(14,85,'vincent comment 2',NULL,NULL,NULL,9),(15,91,'vincent comment 2',NULL,NULL,NULL,9),(16,91,'vincent comment 2',NULL,NULL,NULL,9);
 /*!40000 ALTER TABLE `cd_comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,8 +115,9 @@ CREATE TABLE `cd_feed` (
   `made` timestamp NULL DEFAULT current_timestamp(),
   `revised` timestamp NULL DEFAULT NULL,
   `purged` timestamp NULL DEFAULT NULL,
+  `type` enum('FEED','NEWS') NOT NULL DEFAULT 'FEED',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +126,7 @@ CREATE TABLE `cd_feed` (
 
 LOCK TABLES `cd_feed` WRITE;
 /*!40000 ALTER TABLE `cd_feed` DISABLE KEYS */;
-INSERT INTO `cd_feed` VALUES (1,'1-232323232dfffd',85,1,'PUBLIC','2017-12-08 16:52:10',NULL,NULL),(8,'de8cc6ee-ecb8-11e7-ab81-f40f242f4caa',85,9,'FRIEND',NULL,NULL,NULL);
+INSERT INTO `cd_feed` VALUES (1,'1-232323232dfffd',85,1,'PUBLIC','2017-12-08 16:52:10',NULL,NULL,'FEED'),(8,'de8cc6ee-ecb8-11e7-ab81-f40f242f4caa',85,9,'FRIEND',NULL,NULL,NULL,'FEED'),(9,'567c3c24-f8d6-11e7-9393-f40f242f4caa',91,10,'PUBLIC',NULL,NULL,NULL,'FEED'),(10,'5c986e98-f8d6-11e7-9393-f40f242f4caa',91,11,'PUBLIC',NULL,NULL,NULL,'FEED'),(11,'86cfbab8-f8d6-11e7-9393-f40f242f4caa',91,12,'PUBLIC',NULL,NULL,NULL,'FEED'),(12,'90b91d44-f8d6-11e7-9393-f40f242f4caa',91,13,'PUBLIC',NULL,NULL,NULL,'FEED'),(13,'cca1437c-f8db-11e7-9393-f40f242f4caa',91,14,'PUBLIC',NULL,NULL,NULL,'NEWS'),(14,'c7eb9178-f99b-11e7-9393-f40f242f4caa',91,18,'PUBLIC',NULL,NULL,NULL,'NEWS'),(15,'e656ea5e-f99b-11e7-9393-f40f242f4caa',91,19,'PUBLIC',NULL,NULL,NULL,'NEWS'),(16,'80c5d7a0-f99f-11e7-9393-f40f242f4caa',91,20,'PUBLIC',NULL,NULL,NULL,'FEED');
 /*!40000 ALTER TABLE `cd_feed` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -174,7 +175,7 @@ CREATE TABLE `cd_kAsset` (
   `article_id` int(16) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index2` (`reference`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -183,7 +184,7 @@ CREATE TABLE `cd_kAsset` (
 
 LOCK TABLES `cd_kAsset` WRITE;
 /*!40000 ALTER TABLE `cd_kAsset` DISABLE KEYS */;
-INSERT INTO `cd_kAsset` VALUES (1,'3b9d3414-d9df-11e7-8303-0206965f6893','',NULL,'470511dd93ed9e69329500c83aa9a99c',NULL,'que-huong-4_11.jpg',NULL,'AVATAR',0,0,'2017-12-05 17:10:45',NULL,NULL,NULL),(26,'3b9d3414-d9df-11e7-8303-0206965f6893',NULL,NULL,NULL,NULL,NULL,'description 7 update',NULL,NULL,NULL,'2017-12-30 03:59:00',NULL,NULL,9);
+INSERT INTO `cd_kAsset` VALUES (1,'3b9d3414-d9df-11e7-8303-0206965f6893','',NULL,'470511dd93ed9e69329500c83aa9a99c',NULL,'que-huong-4_11.jpg',NULL,'AVATAR',0,0,'2017-12-05 17:10:45',NULL,NULL,NULL),(26,'3b9d3414-d9df-11e7-8303-0206965f6893',NULL,NULL,NULL,NULL,NULL,'description 7 update',NULL,NULL,NULL,'2017-12-30 03:59:00',NULL,NULL,9),(27,'eed5b770-f5cf-11e7-9393-f40f242f4caa','',NULL,'5933bbad383578f33295debc05dc715d',NULL,'2C47494D-5E2E-42FB-9BE4-A085B56EC409.jpg',NULL,'FEED',0,0,'2018-01-10 06:31:57',NULL,NULL,NULL),(28,'ecf5cbe6-f87c-11e7-8c4a-0206965f6893',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-01-14 02:55:34',NULL,NULL,10),(29,'01707b23-f87d-11e7-8c4a-0206965f6893',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-01-14 02:55:34',NULL,NULL,10),(30,'ecf5cbe6-f87c-11e7-8c4a-0206965f6893',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-01-14 02:55:44',NULL,NULL,11),(31,'01707b23-f87d-11e7-8c4a-0206965f6893',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-01-14 02:55:44',NULL,NULL,11),(32,'ecf5cbe6-f87c-11e7-8c4a-0206965f6893',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-01-14 02:56:55',NULL,NULL,12),(33,'01707b23-f87d-11e7-8c4a-0206965f6893',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-01-14 02:56:55',NULL,NULL,12),(34,'ecf5cbe6-f87c-11e7-8c4a-0206965f6893',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-01-14 02:57:12',NULL,NULL,13),(35,'01707b23-f87d-11e7-8c4a-0206965f6893',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-01-14 02:57:12',NULL,NULL,13),(36,'01707b23-f87d-11e7-8c4a-0206965f6893',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-01-14 03:34:40',NULL,NULL,14),(37,'ecf5cbe6-f87c-11e7-8c4a-0206965f6893',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-01-14 03:34:40',NULL,NULL,14),(41,'3b9d3414-d9df-11e7-8303-0206965f6893',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-01-15 02:28:58',NULL,NULL,18),(42,'3b9d3414-d9df-11e7-8303-0206965f6893',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-01-15 02:29:49',NULL,NULL,19),(43,'3b9d3414-d9df-11e7-8303-0206965f6893',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-01-15 02:55:37',NULL,NULL,20);
 /*!40000 ALTER TABLE `cd_kAsset` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -225,7 +226,7 @@ CREATE TABLE `cd_kAuth` (
   `revised` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   `purged` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -234,7 +235,7 @@ CREATE TABLE `cd_kAuth` (
 
 LOCK TABLES `cd_kAuth` WRITE;
 /*!40000 ALTER TABLE `cd_kAuth` DISABLE KEYS */;
-INSERT INTO `cd_kAuth` VALUES (61,85,NULL,'e10adc3949ba59abbe56e057f20f883e','OAUTH',NULL,'2017-12-12 05:22:34',NULL,NULL),(62,85,'02ecb495-4944-4334-9496-354f7c18d70e','90b781bc-8300-4f94-b5e2-2f1b39b57923','XMPP',NULL,'2017-12-12 05:22:35',NULL,NULL),(63,86,NULL,'e10adc3949ba59abbe56e057f20f883e','OAUTH',NULL,'2018-01-02 17:00:00',NULL,NULL),(64,86,'e6bc4d48-26a3-47d6-b3ca-b671d5ff1828','db8d85ac-bfa4-44ac-9356-4da4a2d7812a','XMPP',NULL,'2018-01-02 17:00:01',NULL,NULL),(69,89,NULL,'e10adc3949ba59abbe56e057f20f883e','OAUTH',NULL,'2018-01-05 04:05:37',NULL,NULL),(70,89,'fa379ce1-3df3-4758-a5df-e56be8f3afa2','8a82de0a-c0aa-47a5-8860-167a89025733','XMPP',NULL,'2018-01-05 04:05:37',NULL,NULL),(71,90,NULL,'e10adc3949ba59abbe56e057f20f883e','OAUTH',NULL,'2018-01-05 04:08:20',NULL,NULL),(72,90,'0e606562-f286-48bf-85f9-e2bb98b107a4','54474a86-5cb4-4e51-90ac-fe49a6a31b49','XMPP',NULL,'2018-01-05 04:08:20',NULL,NULL);
+INSERT INTO `cd_kAuth` VALUES (73,91,NULL,'e10adc3949ba59abbe56e057f20f883e','OAUTH',NULL,'2018-01-14 02:39:08',NULL,NULL);
 /*!40000 ALTER TABLE `cd_kAuth` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -462,7 +463,7 @@ CREATE TABLE `cd_kMember` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQUE` (`email`),
   UNIQUE KEY `mobile_UNIQUE` (`mobile`)
-) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -471,7 +472,7 @@ CREATE TABLE `cd_kMember` (
 
 LOCK TABLES `cd_kMember` WRITE;
 /*!40000 ALTER TABLE `cd_kMember` DISABLE KEYS */;
-INSERT INTO `cd_kMember` VALUES (90,'0f172538-f1ce-11e7-9393-f40f242f4caa','0916273741',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'870772');
+INSERT INTO `cd_kMember` VALUES (85,'0f172538-f1ce-11e7-9393-f40f242f4caa','0916273742',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,'870772'),(91,'0aa713ac-f8d4-11e7-9393-f40f242f4caa','0916273741',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,'946286');
 /*!40000 ALTER TABLE `cd_kMember` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -510,7 +511,7 @@ CREATE TABLE `cd_kMemberAuth` (
   `revised` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   `purged` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -519,7 +520,7 @@ CREATE TABLE `cd_kMemberAuth` (
 
 LOCK TABLES `cd_kMemberAuth` WRITE;
 /*!40000 ALTER TABLE `cd_kMemberAuth` DISABLE KEYS */;
-INSERT INTO `cd_kMemberAuth` VALUES (57,85,61,'2017-12-12 05:22:34',NULL,NULL),(58,85,62,'2017-12-12 05:22:35',NULL,NULL),(59,86,63,'2018-01-02 17:00:00',NULL,NULL),(60,86,64,'2018-01-02 17:00:01',NULL,NULL),(65,89,69,'2018-01-05 04:05:37',NULL,NULL),(66,89,70,'2018-01-05 04:05:37',NULL,NULL),(67,90,71,'2018-01-05 04:08:20',NULL,NULL),(68,90,72,'2018-01-05 04:08:20',NULL,NULL);
+INSERT INTO `cd_kMemberAuth` VALUES (69,91,73,'2018-01-14 02:39:08',NULL,NULL);
 /*!40000 ALTER TABLE `cd_kMemberAuth` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -541,7 +542,7 @@ CREATE TABLE `cd_kMemberRole` (
   `purged` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_cd_k_member_role_member_identity` (`member`,`identity`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -550,7 +551,7 @@ CREATE TABLE `cd_kMemberRole` (
 
 LOCK TABLES `cd_kMemberRole` WRITE;
 /*!40000 ALTER TABLE `cd_kMemberRole` DISABLE KEYS */;
-INSERT INTO `cd_kMemberRole` VALUES (17,76,1,'REGISTRANT',1,'2017-12-04 08:38:50',NULL,NULL),(18,77,1,'REGISTRANT',1,'2017-12-06 17:02:27',NULL,NULL),(19,79,1,'REGISTRANT',1,'2017-12-11 16:52:24',NULL,NULL),(20,80,1,'REGISTRANT',1,'2017-12-11 16:53:28',NULL,NULL),(21,82,1,'REGISTRANT',1,'2017-12-11 17:10:09',NULL,NULL),(22,83,1,'REGISTRANT',1,'2017-12-12 02:25:06',NULL,NULL),(23,84,1,'REGISTRANT',1,'2017-12-12 04:15:53',NULL,NULL),(24,85,1,'REGISTRANT',1,'2017-12-12 05:22:35',NULL,NULL),(25,86,1,'REGISTRANT',1,'2018-01-02 17:00:01',NULL,NULL),(26,87,1,'REGISTRANT',1,'2018-01-05 03:49:50',NULL,NULL),(28,89,1,'REGISTRANT',1,'2018-01-05 04:05:37',NULL,NULL),(29,90,1,'REGISTRANT',1,'2018-01-05 04:08:20',NULL,NULL);
+INSERT INTO `cd_kMemberRole` VALUES (17,76,1,'REGISTRANT',1,'2017-12-04 08:38:50',NULL,NULL),(18,77,1,'REGISTRANT',1,'2017-12-06 17:02:27',NULL,NULL),(19,79,1,'REGISTRANT',1,'2017-12-11 16:52:24',NULL,NULL),(20,80,1,'REGISTRANT',1,'2017-12-11 16:53:28',NULL,NULL),(21,82,1,'REGISTRANT',1,'2017-12-11 17:10:09',NULL,NULL),(22,83,1,'REGISTRANT',1,'2017-12-12 02:25:06',NULL,NULL),(23,84,1,'REGISTRANT',1,'2017-12-12 04:15:53',NULL,NULL),(24,85,1,'REGISTRANT',1,'2017-12-12 05:22:35',NULL,NULL),(25,86,1,'REGISTRANT',1,'2018-01-02 17:00:01',NULL,NULL),(26,87,1,'REGISTRANT',1,'2018-01-05 03:49:50',NULL,NULL),(28,89,1,'REGISTRANT',1,'2018-01-05 04:05:37',NULL,NULL),(29,90,1,'REGISTRANT',1,'2018-01-05 04:08:20',NULL,NULL),(30,91,1,'REGISTRANT',1,'2018-01-14 02:39:08',NULL,NULL);
 /*!40000 ALTER TABLE `cd_kMemberRole` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -963,7 +964,7 @@ CREATE TABLE `cd_like` (
   `purged` timestamp NULL DEFAULT NULL,
   `article_id` int(16) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -972,7 +973,7 @@ CREATE TABLE `cd_like` (
 
 LOCK TABLES `cd_like` WRITE;
 /*!40000 ALTER TABLE `cd_like` DISABLE KEYS */;
-INSERT INTO `cd_like` VALUES (8,85,'2017-12-22 09:16:32',NULL,NULL,1),(9,85,'2017-12-27 04:55:50',NULL,NULL,1);
+INSERT INTO `cd_like` VALUES (12,85,'2018-01-10 06:21:21',NULL,NULL,1);
 /*!40000 ALTER TABLE `cd_like` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1334,7 +1335,7 @@ CREATE TABLE `cd_xOAuth2_access_token` (
 
 LOCK TABLES `cd_xOAuth2_access_token` WRITE;
 /*!40000 ALTER TABLE `cd_xOAuth2_access_token` DISABLE KEYS */;
-INSERT INTO `cd_xOAuth2_access_token` VALUES ('2017-12-29 16:48:27','0e35720b6f0c19d452dfb7d064f6a519','¨\Ì\0sr\0Corg.springframework.security.oauth2.common.DefaultOAuth2AccessToken≤û6$˙\Œ\0L\0additionalInformationt\0Ljava/util/Map;L\0\nexpirationt\0Ljava/util/Date;L\0refreshTokent\0?Lorg/springframework/security/oauth2/common/OAuth2RefreshToken;L\0scopet\0Ljava/util/Set;L\0	tokenTypet\0Ljava/lang/String;L\0valueq\0~\0xpsr\0java.util.LinkedHashMap4¿N\\l¿˚\0Z\0accessOrderxr\0java.util.HashMap\⁄¡\√`\—\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0jidt\0$02ecb495-4944-4334-9496-354f7c18d70et\0xmppPasswordt\0$90b781bc-8300-4f94-b5e2-2f1b39b57923x\0sr\0java.util.DatehjÅKYt\0\0xpw\0\0aòm\Êxsr\0Lorg.springframework.security.oauth2.common.DefaultExpiringOAuth2RefreshToken/\ﬂGcù\–…∑\0L\0\nexpirationq\0~\0xr\0Dorg.springframework.security.oauth2.common.DefaultOAuth2RefreshTokens\·\ncT\‘^\0L\0valueq\0~\0xpt\0$979bb4f4-4513-4e8b-8c58-87eb1dec19d2sq\0~\0w\0\0a~x†\nxsr\0%java.util.Collections$UnmodifiableSetÄí—èõÄU\0\0xr\0,java.util.Collections$UnmodifiableCollectionB\0Ä\À^˜\0L\0ct\0Ljava/util/Collection;xpsr\0java.util.LinkedHashSet\ÿl\◊Zï\›*\0\0xr\0java.util.HashSet∫DÖïñ∏∑4\0\0xpw\0\0\0?@\0\0\0\0\0t\0allxt\0bearert\0$7606e372-3653-434e-a008-556922e3963c','ced61440ad2f87ed34375d7bf069cb3d','0916273741','wrappy_app','¨\Ì\0sr\0Aorg.springframework.security.oauth2.provider.OAuth2AuthenticationΩ@bR\0L\0\rstoredRequestt\0<Lorg/springframework/security/oauth2/provider/OAuth2Request;L\0userAuthenticationt\02Lorg/springframework/security/core/Authentication;xr\0Gorg.springframework.security.authentication.AbstractAuthenticationToken”™(~nGd\0Z\0\rauthenticatedL\0authoritiest\0Ljava/util/Collection;L\0detailst\0Ljava/lang/Object;xp\0sr\0&java.util.Collections$UnmodifiableList¸%1µ\Ïé\0L\0listt\0Ljava/util/List;xr\0,java.util.Collections$UnmodifiableCollectionB\0Ä\À^˜\0L\0cq\0~\0xpsr\0java.util.ArrayListxÅ\“ô\«aù\0I\0sizexp\0\0\0w\0\0\0sr\0Borg.springframework.security.core.authority.SimpleGrantedAuthority\0\0\0\0\0\0@\0L\0rolet\0Ljava/lang/String;xpt\0CD_ROLE_REGISTRANTxq\0~\0psr\0:org.springframework.security.oauth2.provider.OAuth2Request\0\0\0\0\0\0\0\0Z\0approvedL\0authoritiesq\0~\0L\0\nextensionst\0Ljava/util/Map;L\0redirectUriq\0~\0L\0refresht\0;Lorg/springframework/security/oauth2/provider/TokenRequest;L\0resourceIdst\0Ljava/util/Set;L\0\rresponseTypesq\0~\0xr\08org.springframework.security.oauth2.provider.BaseRequest6(z>£qiΩ\0L\0clientIdq\0~\0L\0requestParametersq\0~\0L\0scopeq\0~\0xpt\0\nwrappy_appsr\0%java.util.Collections$UnmodifiableMapÒ•®˛tıB\0L\0mq\0~\0xpsr\0java.util.HashMap\⁄¡\√`\—\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0\ngrant_typet\0passwordt\0usernamet\0\n0916273741t\0scopet\0allxsr\0%java.util.Collections$UnmodifiableSetÄí—èõÄU\0\0xq\0~\0	sr\0java.util.LinkedHashSet\ÿl\◊Zï\›*\0\0xr\0java.util.HashSet∫DÖïñ∏∑4\0\0xpw\0\0\0?@\0\0\0\0\0q\0~\0!xsq\0~\0%w\0\0\0?@\0\0\0\0\0\0xsq\0~\0\Z?@\0\0\0\0\0\0w\0\0\0\0\0\0\0xppsr\0java.util.Collections$EmptySetır¥\À(\0\0xpsq\0~\0%w\0\0\0?@\0\0\0\0\0\0xsr\0Oorg.springframework.security.authentication.UsernamePasswordAuthenticationToken\0\0\0\0\0\0@\0L\0credentialsq\0~\0L\0	principalq\0~\0xq\0~\0sq\0~\0sq\0~\0\0\0\0w\0\0\0q\0~\0xq\0~\0/sr\0java.util.LinkedHashMap4¿N\\l¿˚\0Z\0accessOrderxq\0~\0\Z?@\0\0\0\0\0w\0\0\0\0\0\0q\0~\0q\0~\0q\0~\0q\0~\0q\0~\0 q\0~\0!x\0psr\0-net.cd.jpa.entity.security.AuthenticationUser\0\0\0\0\0\0\0\0L\0emailq\0~\0L\0idt\0Ljava/lang/Integer;L\0\nidentifierq\0~\0L\0jidq\0~\0L\0mobileq\0~\0L\0xmppPasswordq\0~\0xr\02org.springframework.security.core.userdetails.User\0\0\0\0\0\0@\0Z\0accountNonExpiredZ\0accountNonLockedZ\0credentialsNonExpiredZ\0enabledL\0authoritiesq\0~\0L\0passwordq\0~\0L\0usernameq\0~\0xpsq\0~\0\"sr\0java.util.TreeSet›òPìï\Ìá[\0\0xpsr\0Forg.springframework.security.core.userdetails.User$AuthorityComparator\0\0\0\0\0\0@\0\0xpw\0\0\0q\0~\0xpt\0\n0916273741psr\0java.lang.Integer‚†§˜Åá8\0I\0valuexr\0java.lang.NumberÜ¨ïî\‡ã\0\0xp\0\0\0Uq\0~\0;t\0$02ecb495-4944-4334-9496-354f7c18d70ept\0$90b781bc-8300-4f94-b5e2-2f1b39b57923','c21bc600aa43c50c624dec294192aca7');
+INSERT INTO `cd_xOAuth2_access_token` VALUES ('2018-01-14 04:25:38','9fb09322f4a84a7907f9693cb2de25c7','¨\Ì\0sr\0Corg.springframework.security.oauth2.common.DefaultOAuth2AccessToken≤û6$˙\Œ\0L\0additionalInformationt\0Ljava/util/Map;L\0\nexpirationt\0Ljava/util/Date;L\0refreshTokent\0?Lorg/springframework/security/oauth2/common/OAuth2RefreshToken;L\0scopet\0Ljava/util/Set;L\0	tokenTypet\0Ljava/lang/String;L\0valueq\0~\0xpsr\0java.util.LinkedHashMap4¿N\\l¿˚\0Z\0accessOrderxr\0java.util.HashMap\⁄¡\√`\—\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0\0w\0\0\0\0\0\0\0x\0sr\0java.util.DatehjÅKYt\0\0xpw\0\0b\'éòxxsr\0Lorg.springframework.security.oauth2.common.DefaultExpiringOAuth2RefreshToken/\ﬂGcù\–…∑\0L\0\nexpirationq\0~\0xr\0Dorg.springframework.security.oauth2.common.DefaultOAuth2RefreshTokens\·\ncT\‘^\0L\0valueq\0~\0xpt\0$353177b4-2ccd-4a7a-b061-5532445e6b02sq\0~\0\nw\0\0b\'éòwxsr\0%java.util.Collections$UnmodifiableSetÄí—èõÄU\0\0xr\0,java.util.Collections$UnmodifiableCollectionB\0Ä\À^˜\0L\0ct\0Ljava/util/Collection;xpsr\0java.util.LinkedHashSet\ÿl\◊Zï\›*\0\0xr\0java.util.HashSet∫DÖïñ∏∑4\0\0xpw\0\0\0?@\0\0\0\0\0t\0allxt\0bearert\0$f6c51f85-0e44-4431-89bb-b4ff3cc60e07','ced61440ad2f87ed34375d7bf069cb3d','0916273741','wrappy_app','¨\Ì\0sr\0Aorg.springframework.security.oauth2.provider.OAuth2AuthenticationΩ@bR\0L\0\rstoredRequestt\0<Lorg/springframework/security/oauth2/provider/OAuth2Request;L\0userAuthenticationt\02Lorg/springframework/security/core/Authentication;xr\0Gorg.springframework.security.authentication.AbstractAuthenticationToken”™(~nGd\0Z\0\rauthenticatedL\0authoritiest\0Ljava/util/Collection;L\0detailst\0Ljava/lang/Object;xp\0sr\0&java.util.Collections$UnmodifiableList¸%1µ\Ïé\0L\0listt\0Ljava/util/List;xr\0,java.util.Collections$UnmodifiableCollectionB\0Ä\À^˜\0L\0cq\0~\0xpsr\0java.util.ArrayListxÅ\“ô\«aù\0I\0sizexp\0\0\0w\0\0\0sr\0Borg.springframework.security.core.authority.SimpleGrantedAuthority\0\0\0\0\0\0@\0L\0rolet\0Ljava/lang/String;xpt\0CD_ROLE_REGISTRANTxq\0~\0psr\0:org.springframework.security.oauth2.provider.OAuth2Request\0\0\0\0\0\0\0\0Z\0approvedL\0authoritiesq\0~\0L\0\nextensionst\0Ljava/util/Map;L\0redirectUriq\0~\0L\0refresht\0;Lorg/springframework/security/oauth2/provider/TokenRequest;L\0resourceIdst\0Ljava/util/Set;L\0\rresponseTypesq\0~\0xr\08org.springframework.security.oauth2.provider.BaseRequest6(z>£qiΩ\0L\0clientIdq\0~\0L\0requestParametersq\0~\0L\0scopeq\0~\0xpt\0\nwrappy_appsr\0%java.util.Collections$UnmodifiableMapÒ•®˛tıB\0L\0mq\0~\0xpsr\0java.util.HashMap\⁄¡\√`\—\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0\ngrant_typet\0passwordt\0usernamet\0\n0916273741t\0scopet\0allxsr\0%java.util.Collections$UnmodifiableSetÄí—èõÄU\0\0xq\0~\0	sr\0java.util.LinkedHashSet\ÿl\◊Zï\›*\0\0xr\0java.util.HashSet∫DÖïñ∏∑4\0\0xpw\0\0\0?@\0\0\0\0\0q\0~\0!xsq\0~\0%w\0\0\0?@\0\0\0\0\0\0xsq\0~\0\Z?@\0\0\0\0\0\0w\0\0\0\0\0\0\0xppsr\0java.util.Collections$EmptySetır¥\À(\0\0xpsq\0~\0%w\0\0\0?@\0\0\0\0\0\0xsr\0Oorg.springframework.security.authentication.UsernamePasswordAuthenticationToken\0\0\0\0\0\0@\0L\0credentialsq\0~\0L\0	principalq\0~\0xq\0~\0sq\0~\0sq\0~\0\0\0\0w\0\0\0q\0~\0xq\0~\0/sr\0java.util.LinkedHashMap4¿N\\l¿˚\0Z\0accessOrderxq\0~\0\Z?@\0\0\0\0\0w\0\0\0\0\0\0q\0~\0q\0~\0q\0~\0q\0~\0q\0~\0 q\0~\0!x\0psr\0-net.cd.jpa.entity.security.AuthenticationUser\0\0\0\0\0\0\0\0L\0emailq\0~\0L\0idt\0Ljava/lang/Integer;L\0\nidentifierq\0~\0L\0jidq\0~\0L\0mobileq\0~\0L\0xmppPasswordq\0~\0xr\02org.springframework.security.core.userdetails.User\0\0\0\0\0\0@\0Z\0accountNonExpiredZ\0accountNonLockedZ\0credentialsNonExpiredZ\0enabledL\0authoritiesq\0~\0L\0passwordq\0~\0L\0usernameq\0~\0xpsq\0~\0\"sr\0java.util.TreeSet›òPìï\Ìá[\0\0xpsr\0Forg.springframework.security.core.userdetails.User$AuthorityComparator\0\0\0\0\0\0@\0\0xpw\0\0\0q\0~\0xpt\0\n0916273741psr\0java.lang.Integer‚†§˜Åá8\0I\0valuexr\0java.lang.NumberÜ¨ïî\‡ã\0\0xp\0\0\0[q\0~\0;ppp','3473a38f7e4bd74baba8ed743285f98d');
 /*!40000 ALTER TABLE `cd_xOAuth2_access_token` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1471,7 +1472,7 @@ CREATE TABLE `cd_xOAuth2_refresh_token` (
 
 LOCK TABLES `cd_xOAuth2_refresh_token` WRITE;
 /*!40000 ALTER TABLE `cd_xOAuth2_refresh_token` DISABLE KEYS */;
-INSERT INTO `cd_xOAuth2_refresh_token` VALUES ('2017-12-12 06:48:38','c21bc600aa43c50c624dec294192aca7','¨\Ì\0sr\0Lorg.springframework.security.oauth2.common.DefaultExpiringOAuth2RefreshToken/\ﬂGcù\–…∑\0L\0\nexpirationt\0Ljava/util/Date;xr\0Dorg.springframework.security.oauth2.common.DefaultOAuth2RefreshTokens\·\ncT\‘^\0L\0valuet\0Ljava/lang/String;xpt\0$979bb4f4-4513-4e8b-8c58-87eb1dec19d2sr\0java.util.DatehjÅKYt\0\0xpw\0\0a~x†\nx','¨\Ì\0sr\0Aorg.springframework.security.oauth2.provider.OAuth2AuthenticationΩ@bR\0L\0\rstoredRequestt\0<Lorg/springframework/security/oauth2/provider/OAuth2Request;L\0userAuthenticationt\02Lorg/springframework/security/core/Authentication;xr\0Gorg.springframework.security.authentication.AbstractAuthenticationToken”™(~nGd\0Z\0\rauthenticatedL\0authoritiest\0Ljava/util/Collection;L\0detailst\0Ljava/lang/Object;xp\0sr\0&java.util.Collections$UnmodifiableList¸%1µ\Ïé\0L\0listt\0Ljava/util/List;xr\0,java.util.Collections$UnmodifiableCollectionB\0Ä\À^˜\0L\0cq\0~\0xpsr\0java.util.ArrayListxÅ\“ô\«aù\0I\0sizexp\0\0\0w\0\0\0sr\0Borg.springframework.security.core.authority.SimpleGrantedAuthority\0\0\0\0\0\0@\0L\0rolet\0Ljava/lang/String;xpt\0OP_ROLE_REGISTRANTxq\0~\0psr\0:org.springframework.security.oauth2.provider.OAuth2Request\0\0\0\0\0\0\0\0Z\0approvedL\0authoritiesq\0~\0L\0\nextensionst\0Ljava/util/Map;L\0redirectUriq\0~\0L\0refresht\0;Lorg/springframework/security/oauth2/provider/TokenRequest;L\0resourceIdst\0Ljava/util/Set;L\0\rresponseTypesq\0~\0xr\08org.springframework.security.oauth2.provider.BaseRequest6(z>£qiΩ\0L\0clientIdq\0~\0L\0requestParametersq\0~\0L\0scopeq\0~\0xpt\0\nwrappy_appsr\0%java.util.Collections$UnmodifiableMapÒ•®˛tıB\0L\0mq\0~\0xpsr\0java.util.HashMap\⁄¡\√`\—\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0\ngrant_typet\0passwordt\0usernamet\0\n0916273741t\0scopet\0allxsr\0%java.util.Collections$UnmodifiableSetÄí—èõÄU\0\0xq\0~\0	sr\0java.util.LinkedHashSet\ÿl\◊Zï\›*\0\0xr\0java.util.HashSet∫DÖïñ∏∑4\0\0xpw\0\0\0?@\0\0\0\0\0q\0~\0!xsq\0~\0%w\0\0\0?@\0\0\0\0\0\0xsq\0~\0\Z?@\0\0\0\0\0\0w\0\0\0\0\0\0\0xppsr\0java.util.Collections$EmptySetır¥\À(\0\0xpsq\0~\0%w\0\0\0?@\0\0\0\0\0\0xsr\0Oorg.springframework.security.authentication.UsernamePasswordAuthenticationToken\0\0\0\0\0\0@\0L\0credentialsq\0~\0L\0	principalq\0~\0xq\0~\0sq\0~\0sq\0~\0\0\0\0w\0\0\0q\0~\0xq\0~\0/sr\0java.util.LinkedHashMap4¿N\\l¿˚\0Z\0accessOrderxq\0~\0\Z?@\0\0\0\0\0w\0\0\0\0\0\0q\0~\0q\0~\0q\0~\0q\0~\0q\0~\0 q\0~\0!x\0psr\0-net.cd.jpa.entity.security.AuthenticationUser\0\0\0\0\0\0\0\0L\0emailq\0~\0L\0idt\0Ljava/lang/Integer;L\0\nidentifierq\0~\0L\0jidq\0~\0L\0mobileq\0~\0L\0xmppPasswordq\0~\0xr\02org.springframework.security.core.userdetails.User\0\0\0\0\0\0@\0Z\0accountNonExpiredZ\0accountNonLockedZ\0credentialsNonExpiredZ\0enabledL\0authoritiesq\0~\0L\0passwordq\0~\0L\0usernameq\0~\0xpsq\0~\0\"sr\0java.util.TreeSet›òPìï\Ìá[\0\0xpsr\0Forg.springframework.security.core.userdetails.User$AuthorityComparator\0\0\0\0\0\0@\0\0xpw\0\0\0q\0~\0xpt\0\n0916273741psr\0java.lang.Integer‚†§˜Åá8\0I\0valuexr\0java.lang.NumberÜ¨ïî\‡ã\0\0xp\0\0\0Uq\0~\0;t\0$02ecb495-4944-4334-9496-354f7c18d70ept\0$90b781bc-8300-4f94-b5e2-2f1b39b57923');
+INSERT INTO `cd_xOAuth2_refresh_token` VALUES ('2018-01-14 02:47:59','3473a38f7e4bd74baba8ed743285f98d','¨\Ì\0sr\0Lorg.springframework.security.oauth2.common.DefaultExpiringOAuth2RefreshToken/\ﬂGcù\–…∑\0L\0\nexpirationt\0Ljava/util/Date;xr\0Dorg.springframework.security.oauth2.common.DefaultOAuth2RefreshTokens\·\ncT\‘^\0L\0valuet\0Ljava/lang/String;xpt\0$353177b4-2ccd-4a7a-b061-5532445e6b02sr\0java.util.DatehjÅKYt\0\0xpw\0\0b\'éòwx','¨\Ì\0sr\0Aorg.springframework.security.oauth2.provider.OAuth2AuthenticationΩ@bR\0L\0\rstoredRequestt\0<Lorg/springframework/security/oauth2/provider/OAuth2Request;L\0userAuthenticationt\02Lorg/springframework/security/core/Authentication;xr\0Gorg.springframework.security.authentication.AbstractAuthenticationToken”™(~nGd\0Z\0\rauthenticatedL\0authoritiest\0Ljava/util/Collection;L\0detailst\0Ljava/lang/Object;xp\0sr\0&java.util.Collections$UnmodifiableList¸%1µ\Ïé\0L\0listt\0Ljava/util/List;xr\0,java.util.Collections$UnmodifiableCollectionB\0Ä\À^˜\0L\0cq\0~\0xpsr\0java.util.ArrayListxÅ\“ô\«aù\0I\0sizexp\0\0\0w\0\0\0sr\0Borg.springframework.security.core.authority.SimpleGrantedAuthority\0\0\0\0\0\0@\0L\0rolet\0Ljava/lang/String;xpt\0CD_ROLE_REGISTRANTxq\0~\0psr\0:org.springframework.security.oauth2.provider.OAuth2Request\0\0\0\0\0\0\0\0Z\0approvedL\0authoritiesq\0~\0L\0\nextensionst\0Ljava/util/Map;L\0redirectUriq\0~\0L\0refresht\0;Lorg/springframework/security/oauth2/provider/TokenRequest;L\0resourceIdst\0Ljava/util/Set;L\0\rresponseTypesq\0~\0xr\08org.springframework.security.oauth2.provider.BaseRequest6(z>£qiΩ\0L\0clientIdq\0~\0L\0requestParametersq\0~\0L\0scopeq\0~\0xpt\0\nwrappy_appsr\0%java.util.Collections$UnmodifiableMapÒ•®˛tıB\0L\0mq\0~\0xpsr\0java.util.HashMap\⁄¡\√`\—\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0\ngrant_typet\0passwordt\0usernamet\0\n0916273741t\0scopet\0allxsr\0%java.util.Collections$UnmodifiableSetÄí—èõÄU\0\0xq\0~\0	sr\0java.util.LinkedHashSet\ÿl\◊Zï\›*\0\0xr\0java.util.HashSet∫DÖïñ∏∑4\0\0xpw\0\0\0?@\0\0\0\0\0q\0~\0!xsq\0~\0%w\0\0\0?@\0\0\0\0\0\0xsq\0~\0\Z?@\0\0\0\0\0\0w\0\0\0\0\0\0\0xppsr\0java.util.Collections$EmptySetır¥\À(\0\0xpsq\0~\0%w\0\0\0?@\0\0\0\0\0\0xsr\0Oorg.springframework.security.authentication.UsernamePasswordAuthenticationToken\0\0\0\0\0\0@\0L\0credentialsq\0~\0L\0	principalq\0~\0xq\0~\0sq\0~\0sq\0~\0\0\0\0w\0\0\0q\0~\0xq\0~\0/sr\0java.util.LinkedHashMap4¿N\\l¿˚\0Z\0accessOrderxq\0~\0\Z?@\0\0\0\0\0w\0\0\0\0\0\0q\0~\0q\0~\0q\0~\0q\0~\0q\0~\0 q\0~\0!x\0psr\0-net.cd.jpa.entity.security.AuthenticationUser\0\0\0\0\0\0\0\0L\0emailq\0~\0L\0idt\0Ljava/lang/Integer;L\0\nidentifierq\0~\0L\0jidq\0~\0L\0mobileq\0~\0L\0xmppPasswordq\0~\0xr\02org.springframework.security.core.userdetails.User\0\0\0\0\0\0@\0Z\0accountNonExpiredZ\0accountNonLockedZ\0credentialsNonExpiredZ\0enabledL\0authoritiesq\0~\0L\0passwordq\0~\0L\0usernameq\0~\0xpsq\0~\0\"sr\0java.util.TreeSet›òPìï\Ìá[\0\0xpsr\0Forg.springframework.security.core.userdetails.User$AuthorityComparator\0\0\0\0\0\0@\0\0xpw\0\0\0q\0~\0xpt\0\n0916273741psr\0java.lang.Integer‚†§˜Åá8\0I\0valuexr\0java.lang.NumberÜ¨ïî\‡ã\0\0xp\0\0\0[q\0~\0;ppp');
 /*!40000 ALTER TABLE `cd_xOAuth2_refresh_token` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1492,4 +1493,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-09  9:34:32
+-- Dump completed on 2018-01-15 20:20:24
