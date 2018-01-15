@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import net.cd.common.util.SMSServiceUtil;
+import net.cd.common.util.StatusUtil;
 import net.cd.common.util.UserUtil;
 import net.cd.common.util.constant.UserConstant;
 import net.cd.common.web.BaseEndpoint;
@@ -88,12 +89,12 @@ public class CdMemberEndpoint extends BaseEndpoint {
         		String fullSMSServiceURL = smsServiceUtil.getFullSMSServiceURL(activateCode, username);
         		
         		smsVendor.setURL(fullSMSServiceURL);
-//        		String resultSMSSend = smsVendor.send();
-//        		if(!resultSMSSend.equals(String.valueOf(StatusUtil.SUCCESS_STATUS))){
-//        			//set response status to 417
-//        			response.setStatus(HttpServletResponse.SC_EXPECTATION_FAILED);
-//        			return resultSMSSend+"|"+fullSMSServiceURL;
-//        		}
+        		String resultSMSSend = smsVendor.send();
+        		if(!resultSMSSend.equals(String.valueOf(StatusUtil.SUCCESS_STATUS))){
+        			//set response status to 417
+        			response.setStatus(HttpServletResponse.SC_EXPECTATION_FAILED);
+        			return resultSMSSend+"|"+fullSMSServiceURL;
+        		}
         		if(cdKMemberDto == null || cdKMemberDto.getId() == null) {
         			cdKMemberDto = new CdKMemberDto();
         		}
