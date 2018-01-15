@@ -79,6 +79,9 @@ public class CdFeedEndpoint extends BaseEndpoint {
     @RequestMapping(value = "", method = RequestMethod.POST)
     @ApiOperation("Create new feed")
     public boolean addFeeds(@RequestBody CdFeedDto feedDto) throws Exception {
+		if(feedDto.getType() == null) {
+			feedDto.setType(FeedType.FEED);
+		}
 		CdKMemberDto author = memberService.findOne(userUtil.getUserLoginId());
 		feedDto.setAuthor(author);
 		feedService.save(feedDto);
